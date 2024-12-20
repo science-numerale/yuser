@@ -1,22 +1,27 @@
 <script lang="ts">
 import { goto } from "$app/navigation";
+import PopupEnnuyeux from "../components/PopupEnnuyeux.svelte";
 
 let ne_pas = $state(true)
+let dialogue: HTMLDialogElement | undefined = $state()
 
-function demarer() {
+function confirmer() {
 	if (!ne_pas) {
-		goto("/experience")
+		dialogue?.showModal()
 	}
 }
-</script>
 
+function demarer() {
+	goto("/experience")
+}
+</script>
 <svelte:head>
 	<title>Page principale</title>
 </svelte:head>
 
 <button class="fake-but">
 	{#if ne_pas} <span class="hidden">Ne pas</span> {/if}
-	<span role="none" onclick={demarer}>démarer</span> l'expérience !!!
+	<span role="none" onclick={confirmer}>démarer</span> l'expérience !!!
 </button>
 
 <p>
@@ -34,6 +39,10 @@ function demarer() {
 </ul>
 
 <span class="small"><input type="checkbox" bind:checked={ne_pas}>Afficher "ne pas"</span>
+
+<PopupEnnuyeux bind:dialog={dialogue}>
+	Bonjour le monde
+</PopupEnnuyeux>
 
 <style>
 .fake-but {
