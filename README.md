@@ -1,9 +1,9 @@
 # Progression:
 
-[x] page d'accueil
-[x] page d'erreur 404
-[ ] pied de page
-[ ] en-tête
+ - [x] page d'accueil
+ - [x] page d'erreur 404
+ - [ ] pied de page
+ - [ ] en-tête
 
 # sv
 
