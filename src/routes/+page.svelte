@@ -1,9 +1,7 @@
 <script lang="ts">
 import { goto } from "$app/navigation";
-import PopupEnnuyeux from "../components/PopupEnnuyeux.svelte";
 
 let ne_pas = $state(true)
-let dialogue: HTMLDialogElement | undefined = $state()
 
 function confirmer() {
 	if (!ne_pas) {
@@ -40,9 +38,6 @@ function demarer() {
 
 <span class="small"><input type="checkbox" bind:checked={ne_pas}>Afficher "ne pas"</span>
 
-<PopupEnnuyeux bind:dialog={dialogue}>
-	Bonjour le monde
-</PopupEnnuyeux>
 
 <style>
 .fake-but {
