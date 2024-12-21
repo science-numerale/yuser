@@ -1,0 +1,67 @@
+<script lang="ts">
+	import { onMount, type Snippet } from "svelte";
+	import Popup from "./Popup.svelte";
+	import PopupEnnuyeux from "./PopupEnnuyeux.svelte";
+
+	let {
+		children,
+		tuto = $bindable(),
+		onclose,
+	}: {
+		children: Snippet;
+		tuto: { open: CallableFunction } | undefined;
+		onclose?: CallableFunction;
+	} = $props();
+
+	let ouvert = $state({v:false});
+	let dialogue: HTMLDialogElement | undefined = $state();
+	let dialogue_erreur: HTMLDialogElement | undefined = $state();
+	let info = "Vous pouvez cliquer sur ce bouton";
+	let memorisation =
+		"Je peux cliquer sur le bouton auquel le popup fait référence";
+	let entree = $state("Entrez le texte ici...");
+
+	function je_veux_fermer() {
+		if (entree === memorisation) {
+			dialogue?.close();
+			onclose?.();
+			ouvert.v = false
+		} else {
+			dialogue_erreur?.showModal();
+		}
+	}
+
+	tuto = {
+		open: () => {
+			dialogue?.showModal();
+			ouvert.v = true
+		},
+	};
+</script>
+
+<div style="width: fit-content; height: fit-content; display: inline-block;" class={ouvert ? "lui" : ""}>
+	{@render children()}
+</div>
+
+<style>
+.lui {
+	outline: red solid 10px;
+}
+</style>
+
+<Popup bind:dialogue>
+	<h1>Info utile : {info}</h1>
+	<p>
+		Pour être sûr d'avoir bien compris, veuillez recopier cette phrase : "{memorisation}"
+	</p>
+	<input
+		style="caret-color: transparent;"
+		bind:value={entree}
+		onpaste={(e) => e.preventDefault()}
+	/>
+	<button onclick={je_veux_fermer}>Fermer cette information utile</button>
+</Popup>
+
+<PopupEnnuyeux bind:dialogue={dialogue_erreur}
+	>Veuillez entrer correctement la phrase</PopupEnnuyeux
+>
