@@ -14,7 +14,7 @@
 
 	<footer>
 		<p>
-			Pied de page
+			Pied de page {#if Math.random() < 0.01}très rare{/if}
 		</p>
 	</footer>
 </div>

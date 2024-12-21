@@ -21,6 +21,9 @@
 	popup = {
 		async ouvrir() {
 			dialogue.showModal()
+			return new Promise((resolve) => {
+				dialogue.addEventListener("close", ()=>resolve())
+			})
 		},
 		fermer() {
 			dialogue.close()
