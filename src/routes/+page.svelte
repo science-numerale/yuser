@@ -45,10 +45,10 @@
 >
 
 <PopupEnnuyeux bind:popup>
-	Voulez-vous <span role="none" onclick={demarer} style="cursor: pointer;">démarer</span> l'absence
-	d'expérience ?
-	<button onclick={() => popup.fermer()}>Oui</button>
-	<button onclick={() => popup.fermer()}>Bien sûr</button>
+	Voulez-vous <span role="none" onclick={demarer} style="cursor: pointer;">démarer</span>
+	l'expérience ?
+	<button onclick={() => alert("Vous avez le choix")}>Pas sûr</button>
+	<button onclick={() => alert("Vous avez le temps qu'il vous faut")}>Laissez moi du temps...</button>
 </PopupEnnuyeux>
 
 <style>
