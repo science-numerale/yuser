@@ -1,7 +1,7 @@
-<script>
-let { dialog = $bindable(), children } = $props()
+<script lang="ts">
+let { dialogue = $bindable(), children } = $props()
 </script>
 
-<dialog bind:this={dialog}>
+<dialog bind:this={dialogue}>
 	{@render children()}
 </dialog>
