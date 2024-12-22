@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { cheats } from "../states/cheats.svelte";
+	import cheats from "../states/cheats.svelte";
 
 	let dialogue: HTMLDialogElement;
 	let position = 0;

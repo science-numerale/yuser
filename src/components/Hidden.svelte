@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { Snippet } from "svelte";
-    import { cheats } from "../states/cheats.svelte";
+  import cheats from "../states/cheats.svelte";
 	let {
 		children,
 	}: {

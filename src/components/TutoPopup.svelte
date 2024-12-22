@@ -79,5 +79,7 @@
 <style>
 	.lui {
 		outline: red solid 10px;
+		z-index: 10;
+		position: relative;
 	}
 </style>
