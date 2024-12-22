@@ -1,11 +1,13 @@
 <script lang="ts">
 	import Header from './Header.svelte';
 	import '../app.css';
+    import Cheats from '../components/Cheats.svelte';
 
 	let { children } = $props();
 </script>
 
 <div class="app">
+	<Cheats />
 	<Header />
 
 	<main>

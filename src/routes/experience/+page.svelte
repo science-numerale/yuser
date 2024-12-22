@@ -27,6 +27,6 @@
 	<button onclick={()=>alert("En rien pour le moment")}>Savoir en quoi consiste l'expérience</button>
 </TutoPopup>
 
-<TutoPopup bind:popup={tuto3} info="Ce bouton n'est pas cliquable" memorisation="Je comprends que les dévlopeurs n'aient pas eu le temps de coder cette fonctionnalité">
+<TutoPopup bind:popup={tuto3} info="Ce bouton n'est pas cliquable" memorisation="Je comprends que les dévelopeurs n'aient pas eu le temps de coder cette fonctionnalité">
 	<button disabled style="cursor: wait;">Désactiver les informations utiles</button>
 </TutoPopup>

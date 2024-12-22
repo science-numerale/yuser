@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { Snippet } from "svelte";
+    import { cheats } from "../states/cheats.svelte";
 	let {
 		children,
 	}: {
@@ -7,11 +8,13 @@
 	} = $props();
 </script>
 
-<div
-	class="hidden"
->
-	{@render children()}
-</div>
+{#if cheats.enabled}
+	<div
+		class="hidden"
+	>
+		{@render children()}
+	</div>
+{/if}
 
 <style>
 	.hidden {
@@ -19,8 +22,5 @@
 		height: fit-content;
 		display: inline-block;
 		opacity: 10%;
-	}
-	.hidden:hover {
-		opacity: 100%;
 	}
 </style>

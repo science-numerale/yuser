@@ -1,6 +1,22 @@
 {
-  "extends": "./.svelte-kit/tsconfig.json",
-
-  "include": ["src/**/*"],
-  "exclude": ["node_modules/*", "__sapper__/*", "public/*"]
+	"extends": "./.svelte-kit/tsconfig.json",
+	"compilerOptions": {
+		"target": "ES2022",
+		"verbatimModuleSyntax": true,
+		"isolatedModules": true,
+		"plugins": [
+			{
+				"name": "typescript-svelte-plugin",
+				"enabled": true, // enables this plugin
+			}
+		]
+	},
+	"include": [
+		"src/**/*"
+	],
+	"exclude": [
+		"node_modules/*",
+		"__sapper__/*",
+		"public/*"
+	]
 }
