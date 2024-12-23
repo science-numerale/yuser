@@ -3,7 +3,7 @@
 	import type { PopupControls } from "./Popup";
 	import Popup from "./Popup.svelte";
 	import PopupEnnuyeux from "./PopupEnnuyeux.svelte";
-    import Hidden from "./Hidden.svelte";
+	import Hidden from "./Hidden.svelte";
 
 	let {
 		children,
@@ -20,17 +20,17 @@
 	let entree = $state("Entrez le texte ici...");
 	// Varier son vocabulaire !
 	let infobulle: PopupControls = $state();
-	let popup_erreur: PopupControls = $state();
+	let popupErreur: PopupControls = $state();
 
 	// TODO : mettre le 'ouvert' directement dans PopupControls, réactif et tout
 	let ouvert = $state(false);
 
-	function je_veux_fermer() {
+	function jeVeuxFermer() {
 		if (entree === memorisation) {
 			popup.fermer();
 		} else {
 			entree = "Entrez le texte EXACT ici...";
-			popup_erreur.ouvrir();
+			popupErreur.ouvrir();
 		}
 	}
 
@@ -42,7 +42,7 @@
 		},
 		fermer() {
 			ouvert = false;
-			popup_erreur.fermer();
+			popupErreur.fermer();
 			infobulle.fermer();
 		},
 	};
@@ -65,14 +65,19 @@
 		bind:value={entree}
 		onpaste={(e) => e.preventDefault()}
 	/>
-	<button onclick={je_veux_fermer}>Fermer cette information utile</button>
+	<button onclick={jeVeuxFermer}>Fermer cette information utile</button>
 
 	<Hidden>
-		<button class="hidden" onclick={()=>{entree = memorisation}}>Remplir</button>
+		<button
+			class="hidden"
+			onclick={() => {
+				entree = memorisation;
+			}}>Remplir</button
+		>
 	</Hidden>
 </Popup>
 
-<PopupEnnuyeux bind:popup={popup_erreur}>
+<PopupEnnuyeux bind:popup={popupErreur}>
 	Veuillez entrer correctement la phrase
 </PopupEnnuyeux>
 

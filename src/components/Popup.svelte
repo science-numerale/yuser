@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { Snippet } from "svelte";
-	import type { PopupControls } from "./Popup.ts"
-	
+	import type { PopupControls } from "./Popup.ts";
+
 	let {
 		children,
 		popup = $bindable(),
@@ -20,15 +20,15 @@
 
 	popup = {
 		async ouvrir() {
-			dialogue.showModal()
+			dialogue.showModal();
 			return new Promise((resolve) => {
-				dialogue.addEventListener("close", ()=>resolve())
-			})
+				dialogue.addEventListener("close", () => resolve());
+			});
 		},
 		fermer() {
-			dialogue.close()
+			dialogue.close();
 		},
-	}
+	};
 </script>
 
 <dialog bind:this={dialogue} onkeydowncapture={handleKeydown}>

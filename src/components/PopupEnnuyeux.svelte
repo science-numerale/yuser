@@ -9,14 +9,14 @@
 	}: { children: Snippet; popup: PopupControls } = $props();
 
 	let dialogue: PopupControls = $state();
-	let dialogue_confirmation: PopupControls = $state();
+	let dialogueConfirmation: PopupControls = $state();
 	let timer = $state({ v: 0 });
-	let beau_timer = $derived(timer.v.toFixed(2).toString()); // Sinon on a le bug du 0.1 + 0.2
-	let faux_timer = $derived((timer.v + 1).toFixed(2).toString());
+	let beauTimer = $derived(timer.v.toFixed(2).toString()); // Sinon on a le bug du 0.1 + 0.2
+	let fauxTimer = $derived((timer.v + 1).toFixed(2).toString());
 	let intervale: number;
 	let random: { v: boolean } = $state({ v: false });
 
-	function je_veux_fermer() {
+	function jeVeuxFermer() {
 		random.v = Math.random() < 0.5;
 		timer.v = 0;
 		clearInterval(intervale);
@@ -24,13 +24,15 @@
 			timer.v += 0.01;
 		}, 10);
 
-		dialogue_confirmation.ouvrir();
+		dialogueConfirmation.ouvrir();
 	}
 	function fermer() {
-		dialogue_confirmation.fermer();
+		dialogueConfirmation.fermer();
 	}
-	function fermer_tout() {
-		popup.fermer()
+
+	// TODO : wtf c'est quoi ça en bas
+	function fermerTout() {
+		popup.fermer();
 	}
 
 	popup = {
@@ -38,7 +40,7 @@
 			dialogue.ouvrir();
 		},
 		fermer() {
-			dialogue_confirmation.fermer();
+			dialogueConfirmation.fermer();
 			dialogue.fermer();
 		},
 	};
@@ -47,21 +49,21 @@
 <Popup bind:popup={dialogue}>
 	{@render children()}
 	<br />
-	<span onclick={je_veux_fermer}
+	<span onclick={jeVeuxFermer}
 		><abbr title="Ne Pas Laisser Ce Popup Ouvert">NPLCPO</abbr></span
 	>
 </Popup>
 
-<Popup bind:popup={dialogue_confirmation}>
+<Popup bind:popup={dialogueConfirmation}>
 	Êtes-vous sûr de vouloir fermer ce popup ainsi que celui sur lequel vous avez
-	cliqué il y a {beau_timer} secondes
-	{@render faux_bouton(random.v)}
-	<button onclick={fermer_tout}>Autant que {beau_timer} = {beau_timer}</button>
-	{@render faux_bouton(!random.v)}
+	cliqué il y a {beauTimer} secondes
+	{@render fauxBouton(random.v)}
+	<button onclick={fermerTout}>Autant que {beauTimer} = {beauTimer}</button>
+	{@render fauxBouton(!random.v)}
 </Popup>
 
-{#snippet faux_bouton(affiché: boolean)}
+{#snippet fauxBouton(affiché: boolean)}
 	{#if affiché}
-		<button onclick={fermer}>Autant que {faux_timer} = {beau_timer}</button>
+		<button onclick={fermer}>Autant que {fauxTimer} = {beauTimer}</button>
 	{/if}
 {/snippet}

@@ -1,20 +1,21 @@
 <script lang="ts">
 	import { onMount } from "svelte";
 
-	let number = $state(20)
+	let nombre = $state(20);
 
 	onMount(() => {
 		alert("! VOUS AVEZ ÉTÉ INFECTÉ PAR LES MÉCHANTS !");
 	});
 
 	function AJOUTER() {
-		number += 10
+		nombre += 10;
 	}
 </script>
 
-{#each Array(number).fill(null) as _}
+{#each Array(nombre).fill(null) as _}
 	<h1
-		style="position: absolute; top: calc({Math.random()}*100dvh);	left: calc({Math.random()}*100dvw); color: hsl({Math.random()*360},100%,50%);"
+		style="position: absolute; top: calc({Math.random()}*100dvh);	left: calc({Math.random()}*100dvw); color: hsl({Math.random() *
+			360},100%,50%);"
 	>
 		INFECTÉ
 	</h1>
@@ -22,7 +23,8 @@
 
 <dialog open>
 	<h1>VOTRE ORDINATEUR À ÉTÉ INFECTÉ !!!</h1>
-	<button onclick={AJOUTER} class="bigredbutton">Réparer MAINTENANT !!!*</button>
+	<button onclick={AJOUTER} class="bigredbutton">Réparer MAINTENANT !!!*</button
+	>
 </dialog>
 
 <svelte:body />

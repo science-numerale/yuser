@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { Snippet } from "svelte";
-  import cheats from "../states/cheats.svelte";
+	import cheats from "../states/cheats.svelte";
 	let {
 		children,
 	}: {
@@ -9,9 +9,7 @@
 </script>
 
 {#if cheats.enabled}
-	<div
-		class="hidden"
-	>
+	<div class="hidden">
 		{@render children()}
 	</div>
 {/if}

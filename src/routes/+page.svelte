@@ -1,19 +1,18 @@
 <script lang="ts">
 	import { goto } from "$app/navigation";
-    import type { PopupControls } from "../components/Popup";
-	import Popup from "../components/Popup.svelte";
+	import type { PopupControls } from "../components/Popup";
 	import PopupEnnuyeux from "../components/PopupEnnuyeux.svelte";
 
-	let ne_pas = $state(true);
+	let nePas = $state(true);
 	let popup: PopupControls = $state();
 
 	function confirmer() {
-		if (!ne_pas) {
-			popup.ouvrir()
+		if (!nePas) {
+			popup.ouvrir();
 		}
 	}
 	function demarer() {
-		popup.fermer()
+		popup.fermer();
 		goto("/experience");
 	}
 </script>
@@ -23,7 +22,7 @@
 </svelte:head>
 
 <button class="fake-but">
-	{#if ne_pas}
+	{#if nePas}
 		<span class="hidden">Ne pas</span>
 	{/if}
 	<span role="none" onclick={confirmer}>démarer</span> l'expérience !!!
@@ -41,14 +40,18 @@
 	<li>Assembler le tout</li>
 </ul>
 <span class="small"
-	><input type="checkbox" bind:checked={ne_pas} />Afficher "ne pas"</span
+	><input type="checkbox" bind:checked={nePas} />Afficher "ne pas"</span
 >
 
 <PopupEnnuyeux bind:popup>
-	Voulez-vous <span role="none" onclick={demarer} style="cursor: pointer;">démarer</span>
+	Voulez-vous <span role="none" onclick={demarer} style="cursor: pointer;"
+		>démarer</span
+	>
 	l'expérience ?
 	<button onclick={() => alert("Vous avez le choix")}>Pas sûr</button>
-	<button onclick={() => alert("Vous avez le temps qu'il vous faut")}>Laissez moi du temps...</button>
+	<button onclick={() => alert("Vous avez le temps qu'il vous faut")}
+		>Laissez moi du temps...</button
+	>
 </PopupEnnuyeux>
 
 <style>
