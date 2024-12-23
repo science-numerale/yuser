@@ -2,7 +2,6 @@
 	import { onMount } from "svelte";
 	import TutoPopup from "../../components/TutoPopup.svelte";
 	import type { PopupControls } from "../../components/Popup";
-	import cheats from "../../states/cheats.svelte";
 
 	let tuto1: PopupControls;
 	let tuto2: PopupControls;
@@ -14,9 +13,7 @@
 	];
 
 	onMount(() => {
-		if (cheats.tutorials) {
-			tuto1.ouvrir().then(() => tuto2.ouvrir().then(() => tuto3.ouvrir()));
-		}
+		tuto1.ouvrir().then(() => tuto2.ouvrir().then(() => tuto3.ouvrir()));
 	});
 </script>
 

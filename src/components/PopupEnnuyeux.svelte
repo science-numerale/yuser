@@ -6,7 +6,7 @@
 	let {
 		children,
 		popup = $bindable(),
-	}: { children: Snippet; popup: PopupControls } = $props();
+	}: { children: Snippet; popup?: PopupControls } = $props();
 
 	let dialogue: PopupControls = $state();
 	let dialogueConfirmation: PopupControls = $state();

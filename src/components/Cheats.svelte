@@ -40,7 +40,14 @@
 
 <svelte:window onkeydown={intercepter} />
 
-<dialog class="cheat" bind:this={dialogue}>Cheat activés !!!</dialog>
+<dialog class="cheat" bind:this={dialogue}>
+	Cheat activés !!!
+	<ul>
+		<li>
+			<input type="checkbox" bind:checked={cheats.pasDeTutoriels} /> Pas de tutoriels
+		</li>
+	</ul>
+</dialog>
 
 <style>
 	.cheat {

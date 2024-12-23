@@ -4,6 +4,7 @@
 	import Popup from "./Popup.svelte";
 	import PopupEnnuyeux from "./PopupEnnuyeux.svelte";
 	import Hidden from "./Hidden.svelte";
+	import cheats from "../states/cheats.svelte"
 
 	let {
 		children,
@@ -12,7 +13,7 @@
 		memorisation,
 	}: {
 		children: Snippet;
-		popup: PopupControls;
+		popup?: PopupControls;
 		info: string;
 		memorisation: string;
 	} = $props();
@@ -36,9 +37,13 @@
 
 	popup = {
 		async ouvrir() {
-			ouvert = true;
-			entree = "Entrez le texte ici...";
-			await infobulle.ouvrir();
+			if (!(cheats.enabled && cheats.pasDeTutoriels)) {
+				ouvert = true;
+				entree = "Entrez le texte ici...";
+				await infobulle.ouvrir();
+			} else {
+				// Pas de tuto
+			}
 		},
 		fermer() {
 			ouvert = false;

@@ -1,14 +1,25 @@
 <script lang="ts">
 	import { onMount } from "svelte";
+	import Popup from "../../components/Popup.svelte";
+	import type { PopupControls } from "../../components/Popup";
 
 	let nombre = $state(20);
+	let erreur: PopupControls = $state();
 
 	onMount(() => {
-		alert("! VOUS AVEZ ÉTÉ INFECTÉ PAR LES MÉCHANTS !");
+		alert("! FLASH DE LUMIÈRE IMMINANTS !");
+		faireErreur();
 	});
 
-	function AJOUTER() {
+	function CLIC() {
+		document.documentElement.requestFullscreen();
 		nombre += 10;
+	}
+
+	function faireErreur() {
+		erreur.ouvrir().then(() => {
+			setTimeout(faireErreur, Math.random() * 10000);
+		});
 	}
 </script>
 
@@ -23,9 +34,20 @@
 
 <dialog open>
 	<h1>VOTRE ORDINATEUR À ÉTÉ INFECTÉ !!!</h1>
-	<button onclick={AJOUTER} class="bigredbutton">Réparer MAINTENANT !!!*</button
+	<p>Appelez le <code>08 90 10 10 00</code></p>
+	<button onclick={CLIC} class="bigredbutton">Réparer MAINTENANT !!!*</button
 	>
+	<br />
+	<small>
+		*nous nous réservons le droit de faire le bien par quelque moyen jugé
+		adéquat par notre chef qualité. En échange, nous vous offrons la
+		responsabilité de vos données.
+	</small><br>
 </dialog>
+
+<Popup bind:popup={erreur}
+	>Erreur <button onclick={() => {erreur.fermer(); CLIC()}}>Ok</button></Popup
+>
 
 <svelte:body />
 
@@ -60,9 +82,12 @@
 		0% {
 			transform: scale(1) translateY(50dvh); /* Initial scale */
 		}
-		100% {
+		50% {
 			transform: scale(2); /* Final scale */
 			margin-left: 20rem;
+		}
+		100% {
+			transform: scale(1) translateY(50dvh); /* Initial scale */
 		}
 	}
 </style>

@@ -7,7 +7,7 @@
 		popup = $bindable(),
 	}: {
 		children: Snippet;
-		popup: PopupControls;
+		popup?: PopupControls;
 	} = $props();
 
 	function handleKeydown(event: KeyboardEvent) {

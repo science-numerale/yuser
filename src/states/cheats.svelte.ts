@@ -1,16 +1,20 @@
+import localStorageState from "./storage.svelte";
+
 type Cheats = {
 	enabled: boolean
-	noTutorials: boolean
+	pasDeTutoriels: boolean
 };
 
-let def: Cheats = { enabled: false, noTutorials: false };
+let def: Cheats = { enabled: false, pasDeTutoriels: false };
 
-let cheats = $state(JSON.parse(window?.localStorage.getItem("cheats") || JSON.stringify(def)))
+//let cheats = $state(JSON.parse(window?.localStorage.getItem("cheats") || JSON.stringify(def)))
+//
+//$effect.root(() => {
+//	$effect(() => {
+//		localStorage.setItem("cheats", JSON.stringify(cheats))
+//	})
+//})
 
-$effect.root(() => {
-	$effect(() => {
-		localStorage.setItem("cheats", JSON.stringify(cheats))
-	})
-})
+let stated = localStorageState("cheats", def)
 
-export default cheats
+export default stated
