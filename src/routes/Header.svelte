@@ -1,8 +1,9 @@
 <script lang="ts">
-	import { page } from "$app/stores";
+	import { base } from "$app/paths";
+	import { page } from "$app/state";
 
 	const pages = {
-		Maison: "/",
+		Maison: base + "/",
 	};
 </script>
 
@@ -10,7 +11,7 @@
 	<nav>
 		<ul>
 			{#each Object.entries(pages) as [n, a]}
-				<li aria-current={$page.url.pathname === a ? "page" : undefined}>
+				<li aria-current={page.url.pathname === a ? "page" : undefined}>
 					<a href={a}>{n}</a>
 				</li>
 			{/each}

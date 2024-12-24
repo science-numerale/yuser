@@ -7,7 +7,7 @@
 	let erreur: PopupControls = $state();
 
 	onMount(() => {
-		alert("! FLASH DE LUMIÈRE IMMINANTS !");
+		alert("! FLASH DE LUMIÈRE IMMINANTS ! (cette page est une blague au passage)");
 		faireErreur();
 	});
 

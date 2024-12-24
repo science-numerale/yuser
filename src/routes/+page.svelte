@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { goto } from "$app/navigation";
+	import { base } from "$app/paths";
 	import type { PopupControls } from "../components/Popup";
 	import PopupEnnuyeux from "../components/PopupEnnuyeux.svelte";
 
@@ -13,7 +14,7 @@
 	}
 	function demarer() {
 		popup.fermer();
-		goto("/experience");
+		goto(base + "/experience");
 	}
 </script>
 
