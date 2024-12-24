@@ -5,7 +5,7 @@ on:
     branches: 'main'
 
 jobs:
-  build_site:
+  fabrication:
     runs-on: ubuntu-latest
     steps:
       - name: Obtention du code
@@ -30,7 +30,7 @@ jobs:
         with:
           path: 'build/'
 
-  deploy:
+  publication_sur_l_internet:
     needs: build_site
     runs-on: ubuntu-latest
 

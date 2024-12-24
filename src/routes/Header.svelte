@@ -2,19 +2,15 @@
 	import { base } from "$app/paths";
 	import { page } from "$app/state";
 
-	const pages = {
-		Maison: base + "/",
-	};
+	let selecteur = `${base}/selecteur`
 </script>
 
 <header>
 	<nav>
 		<ul>
-			{#each Object.entries(pages) as [n, a]}
-				<li aria-current={page.url.pathname === a ? "page" : undefined}>
-					<a href={a}>{n}</a>
-				</li>
-			{/each}
+			<li aria-current={page.url.pathname === selecteur ? "page" : undefined}>
+				<a href={selecteur}>Sélecteur de page</a>
+			</li>
 		</ul>
 	</nav>
 </header>
