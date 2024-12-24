@@ -3,11 +3,11 @@
 import { onMount } from "svelte";
 
 	let divCool: HTMLDivElement = $state();
-	let nombre = $state(100);
+	let nombre = $state(1000);
 
 	onMount(() => {
 		let observer = new IntersectionObserver(() => {
-			nombre += 300;
+			nombre += 1000;
 		});
 		observer.observe(divCool);
 	});
@@ -30,5 +30,5 @@ import { onMount } from "svelte";
 	</ul>
 </nav>
 <div bind:this={divCool}
-	style="position: absolute; bottom: 0; height: 100dvh; width: 100%;"
+	style="position: absolute; bottom: 0; height: 1000dvh; width: 100%;"
 ></div>
