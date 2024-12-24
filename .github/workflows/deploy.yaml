@@ -31,7 +31,7 @@ jobs:
           path: 'build/'
 
   publication_sur_l_internet:
-    needs: build_site
+    needs: fabrication
     runs-on: ubuntu-latest
 
     permissions:

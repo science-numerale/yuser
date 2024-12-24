@@ -19,7 +19,7 @@ import { onMount } from "svelte";
 	<ul>
 		{#each Array(nombre).fill(null) as _, n}
 			<li>
-				<a href={`${base}/page${n}`}>Page n°{n}</a>
+				<a href={`${base}/page?n=${n}`}>Page n°{n}</a>
 			</li>
 			{#if n===maison}
 				<li>
