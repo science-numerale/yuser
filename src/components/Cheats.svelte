@@ -51,7 +51,8 @@
 
 <style>
 	.cheat {
-		position: absolute;
+		position: fixed;
 		bottom: 0;
+		z-index: 99999;
 	}
 </style>

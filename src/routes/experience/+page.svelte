@@ -20,7 +20,7 @@
 <TutoPopup
 	bind:popup={tuto1}
 	info="Ce bouton est cliquable"
-	memorisation="Je peux cliquer sur le bouton auquel le popup fait référence, c'est à dire celui dont l'encadrement est rouge"
+	memorisation="Je peux cliquer sur le bouton auquel le popup fait référence, c'est-à-dire celui dont l'encadrement est rouge"
 >
 	<button onclick={() => alert(faits[Math.floor(Math.random() * faits.length)])}
 		>Obtenir une information inutile</button
@@ -30,7 +30,7 @@
 <TutoPopup
 	bind:popup={tuto2}
 	info="Ce bouton est cliquable"
-	memorisation="Je peux cliquer sur le bouton auquel le popup fait référence, c'est à dire celui dont l'encadrement est rouge, et qui n'affiche pas le nombre {Math.random().toString()}"
+	memorisation="Je peux cliquer sur le bouton auquel le popup fait référence, c'est-à-dire celui dont l'encadrement est rouge, et qui n'affiche pas le nombre {Math.random().toString()}"
 >
 	<button onclick={() => alert("En rien pour le moment")}
 		>Savoir en quoi consiste l'expérience</button

@@ -10,27 +10,52 @@
 		popup?: PopupControls;
 	} = $props();
 
-	function handleKeydown(event: KeyboardEvent) {
-		if (event.key === "Escape") {
-			event.preventDefault(); // Prevent the default action (closing the dialog)
-		}
-	}
-
-	let dialogue: HTMLDialogElement | undefined = $state();
+	let ouvert = $state(false);
+	let resolution = ()=>{}
 
 	popup = {
 		async ouvrir() {
-			dialogue.showModal();
+			ouvert = true;
 			return new Promise((resolve) => {
-				dialogue.addEventListener("close", () => resolve());
+				resolution = resolve
 			});
 		},
 		fermer() {
-			dialogue.close();
+			ouvert = false;
+			resolution()
 		},
 	};
 </script>
 
-<dialog bind:this={dialogue} onkeydowncapture={handleKeydown}>
-	{@render children()}
-</dialog>
+{#if ouvert}
+	<div class="cacheur"></div>
+	<div class="contenu">
+		{@render children()}
+	</div>
+{/if}
+
+<style>
+	.contenu {
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		z-index: 999;
+
+		background: white;
+		border: solid black;
+		padding: 1rem;
+	}
+	.cacheur {
+		content: "";
+		position: fixed;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		z-index: 999;
+
+		background: black;
+		opacity: 10%;
+	}
+</style>
