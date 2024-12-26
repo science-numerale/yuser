@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { Snippet } from "svelte";
-	import cheats from "../states/cheats.svelte";
+	import triche from "../states/triche.svelte";
 	let {
 		children,
 	}: {
@@ -8,7 +8,7 @@
 	} = $props();
 </script>
 
-{#if cheats.enabled}
+{#if triche.active}
 	<div class="hidden">
 		{@render children()}
 	</div>

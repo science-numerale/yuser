@@ -1,14 +1,15 @@
 <script lang="ts">
 	import { onMount } from "svelte";
 	import Popup from "../../components/Popup.svelte";
-	import type { PopupControls } from "../../components/Popup";
 
 	let nombre = $state(20);
-	let erreur: PopupControls = $state();
+	let erreur = $state(true);
 
 	onMount(() => {
-		alert("! FLASH DE LUMIÈRE IMMINANTS ! (cette page est une blague au passage)");
-		faireErreur();
+		alert(
+			"! FLASH DE LUMIÈRE IMMINANTS ! (cette page est une blague au passage)",
+		);
+		erreur = true;
 	});
 
 	function CLIC() {
@@ -16,11 +17,13 @@
 		nombre += 10;
 	}
 
-	function faireErreur() {
-		erreur.ouvrir().then(() => {
-			setTimeout(faireErreur, Math.random() * 10000);
-		});
-	}
+	$effect(() => {
+		if (!erreur) {
+			setTimeout(() => {
+				erreur = true;
+			}, Math.random() * 10000);
+		}
+	});
 </script>
 
 {#each Array(nombre).fill(null) as _}
@@ -35,18 +38,22 @@
 <dialog open>
 	<h1>VOTRE ORDINATEUR À ÉTÉ INFECTÉ !!!</h1>
 	<p>Appelez le <code>08 90 10 10 00</code></p>
-	<button onclick={CLIC} class="bigredbutton">Réparer MAINTENANT !!!*</button
-	>
+	<button onclick={CLIC} class="bigredbutton">Réparer MAINTENANT !!!*</button>
 	<br />
 	<small>
 		*nous nous réservons le droit de faire le bien par quelque moyen jugé
 		adéquat par notre chef qualité. En échange, nous vous offrons la
 		responsabilité de vos données.
-	</small><br>
+	</small><br />
 </dialog>
 
-<Popup bind:popup={erreur}
-	>Erreur <button onclick={() => {erreur.fermer(); CLIC()}}>Ok</button></Popup
+<Popup bind:ouvert={erreur}
+	>Erreur <button
+		onclick={() => {
+			erreur = false;
+			CLIC();
+		}}>Ok</button
+	></Popup
 >
 
 <svelte:body />

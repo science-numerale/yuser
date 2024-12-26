@@ -1,11 +1,11 @@
 <script lang="ts">
 	import { onMount } from "svelte";
 	import TutoPopup from "../../components/TutoPopup.svelte";
-	import type { PopupControls } from "../../components/Popup";
+	import { lorsFermeture } from "../../components/PopupUtils.svelte"
 
-	let tuto1: PopupControls;
-	let tuto2: PopupControls;
-	let tuto3: PopupControls;
+	let tuto1: boolean = $state(false);
+	let tuto2: boolean = $state(false);
+	let tuto3: boolean = $state(false);
 
 	let faits = [
 		"Il existe un certain nombre de crêpes cuisinées à certaines période de l'année dans certaines régions du globe",
@@ -13,12 +13,21 @@
 	];
 
 	onMount(() => {
-		tuto1.ouvrir().then(() => tuto2.ouvrir().then(() => tuto3.ouvrir()));
+		tuto1 = true;
 	});
+
+	// TODO : Faire ça plus proprement
+	$effect(()=>{
+		tuto2 = !tuto1
+	})
+	$effect(()=>{
+		tuto3 = !tuto1 && !tuto2
+	})
+	
 </script>
 
 <TutoPopup
-	bind:popup={tuto1}
+	bind:ouvert={tuto1}
 	info="Ce bouton est cliquable"
 	memorisation="Je peux cliquer sur le bouton auquel le popup fait référence, c'est-à-dire celui dont l'encadrement est rouge"
 >
@@ -28,7 +37,7 @@
 </TutoPopup>
 
 <TutoPopup
-	bind:popup={tuto2}
+	bind:ouvert={tuto2}
 	info="Ce bouton est cliquable"
 	memorisation="Je peux cliquer sur le bouton auquel le popup fait référence, c'est-à-dire celui dont l'encadrement est rouge, et qui n'affiche pas le nombre {Math.random().toString()}"
 >
@@ -38,7 +47,7 @@
 </TutoPopup>
 
 <TutoPopup
-	bind:popup={tuto3}
+	bind:ouvert={tuto3}
 	info="Ce bouton n'est pas cliquable"
 	memorisation="Je comprends que les dévelopeurs n'aient pas eu le temps de coder cette fonctionnalité"
 >

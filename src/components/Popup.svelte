@@ -1,30 +1,25 @@
 <script lang="ts">
 	import type { Snippet } from "svelte";
-	import type { PopupControls } from "./Popup.ts";
 
 	let {
 		children,
-		popup = $bindable(),
+		ouvert = $bindable(false),
 	}: {
 		children: Snippet;
-		popup?: PopupControls;
+		ouvert?: boolean;
 	} = $props();
 
-	let ouvert = $state(false);
-	let resolution = ()=>{}
-
-	popup = {
-		async ouvrir() {
-			ouvert = true;
-			return new Promise((resolve) => {
-				resolution = resolve
-			});
-		},
-		fermer() {
-			ouvert = false;
-			resolution()
-		},
-	};
+	//let precedendemmentOuvert = $state.snapshot(ouvert)
+	//
+	//$effect(()=>{
+	//	if (!precedendemmentOuvert && ouvert) {
+	//		precedendemmentOuvert = $state.snapshot(ouvert)
+	//		lorsOuverture()
+	//	} else if (precedendemmentOuvert && !ouvert) {
+	//		precedendemmentOuvert = $state.snapshot(ouvert)
+	//		lorsFermeture()
+	//	}
+	//})
 </script>
 
 {#if ouvert}

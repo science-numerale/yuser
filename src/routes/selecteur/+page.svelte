@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { base } from "$app/paths";
-import { onMount } from "svelte";
+	import { onMount } from "svelte";
 
 	let divCool: HTMLDivElement = $state();
 	let nombre = $state(1000);
@@ -12,7 +12,7 @@ import { onMount } from "svelte";
 		observer.observe(divCool);
 	});
 
-	let maison = Math.floor(Math.random()*200)
+	let maison = Math.floor(Math.random() * 200);
 </script>
 
 <nav>
@@ -21,7 +21,7 @@ import { onMount } from "svelte";
 			<li>
 				<a href={`${base}/page?n=${n}`}>Page n°{n}</a>
 			</li>
-			{#if n===maison}
+			{#if n === maison}
 				<li>
 					<a href={`${base}/`}>Maison</a>
 				</li>
@@ -29,6 +29,7 @@ import { onMount } from "svelte";
 		{/each}
 	</ul>
 </nav>
-<div bind:this={divCool}
+<div
+	bind:this={divCool}
 	style="position: absolute; bottom: 0; height: 1000dvh; width: 100%;"
 ></div>

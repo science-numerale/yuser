@@ -1,19 +1,18 @@
 <script lang="ts">
 	import { goto } from "$app/navigation";
 	import { base } from "$app/paths";
-	import type { PopupControls } from "../components/Popup";
 	import PopupEnnuyeux from "../components/PopupEnnuyeux.svelte";
 
 	let nePas = $state(true);
-	let popup: PopupControls = $state();
+	let popup: boolean = $state(false);
 
 	function confirmer() {
 		if (!nePas) {
-			popup.ouvrir();
+			popup = true;
 		}
 	}
 	function demarer() {
-		popup.fermer();
+		popup = false;
 		goto(base + "/experience");
 	}
 </script>
@@ -44,7 +43,7 @@
 	><input type="checkbox" bind:checked={nePas} />Afficher "ne pas"</span
 >
 
-<PopupEnnuyeux bind:popup>
+<PopupEnnuyeux bind:ouvert={popup}>
 	Voulez-vous <span role="none" onclick={demarer} style="cursor: pointer;"
 		>démarer</span
 	>

@@ -1,69 +1,56 @@
 <script lang="ts">
 	import type { Snippet } from "svelte";
 	import Popup from "./Popup.svelte";
-	import type { PopupControls } from "./Popup";
 
 	let {
 		children,
-		popup = $bindable(),
-	}: { children: Snippet; popup?: PopupControls } = $props();
+		ouvert = $bindable(false),
+	}: {
+		children: Snippet;
+		ouvert?: boolean;
+	} = $props();
 
-	let dialogue: PopupControls = $state();
-	let dialogueConfirmation: PopupControls = $state();
+	let dialogueConfirmation = $state(false)
+	$effect(()=>{
+		dialogueConfirmation = dialogueConfirmation && ouvert
+	})
+
 	let timer = $state({ v: 0 });
 	let beauTimer = $derived(timer.v.toFixed(2).toString()); // Sinon on a le bug du 0.1 + 0.2
 	let fauxTimer = $derived((timer.v + 1).toFixed(2).toString());
 	let intervale: number;
-	let random: { v: boolean } = $state({ v: false });
+	let random: boolean = $state( false );
 
-	function jeVeuxFermer() {
-		random.v = Math.random() < 0.5;
+	function ouvirConfirmation() {
+		random = Math.random() < 0.5;
 		timer.v = 0;
 		clearInterval(intervale);
 		intervale = setInterval(() => {
 			timer.v += 0.01;
 		}, 10);
 
-		dialogueConfirmation.ouvrir();
+		dialogueConfirmation = true;
 	}
-	function fermer() {
-		dialogueConfirmation.fermer();
-	}
-
-	// TODO : wtf c'est quoi ça en bas
-	function fermerTout() {
-		popup.fermer();
-	}
-
-	popup = {
-		async ouvrir() {
-			dialogue.ouvrir();
-		},
-		fermer() {
-			dialogueConfirmation.fermer();
-			dialogue.fermer();
-		},
-	};
 </script>
 
-<Popup bind:popup={dialogue}>
+<Popup bind:ouvert>
 	{@render children()}
 	<br />
-	<span role="button" tabindex="0" onkeydown={()=>{}} onclick={jeVeuxFermer}
+	<span role="button" tabindex="0" onkeydown={()=>{}} onclick={ouvirConfirmation}
 		><abbr title="Ne Pas Laisser Ce Popup Ouvert">NPLCPO</abbr></span
 	>
 </Popup>
 
-<Popup bind:popup={dialogueConfirmation}>
+<Popup bind:ouvert={dialogueConfirmation}>
 	Êtes-vous sûr de vouloir fermer ce popup ainsi que celui sur lequel vous avez
 	cliqué il y a {beauTimer} secondes
-	{@render fauxBouton(random.v)}
-	<button onclick={fermerTout}>Autant que {beauTimer} = {beauTimer}</button>
-	{@render fauxBouton(!random.v)}
+	{@render fauxBouton(random)}
+	<button onclick={()=>{ouvert = false}}>Autant que {beauTimer} = {beauTimer}</button>
+	{@render fauxBouton(!random)}
 </Popup>
 
 {#snippet fauxBouton(affiché: boolean)}
 	{#if affiché}
-		<button onclick={fermer}>Autant que {fauxTimer} = {beauTimer}</button>
+		<button onclick={()=>{dialogueConfirmation = false}}>Autant que {fauxTimer} = {beauTimer}</button>
 	{/if}
 {/snippet}

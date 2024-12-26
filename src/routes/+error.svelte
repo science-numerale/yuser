@@ -1,16 +1,24 @@
 <script>
-	import { page } from "$app/stores";
+	import { page } from "$app/state";
+	import PopupEnnuyeux from "../components/PopupEnnuyeux.svelte";
+
+	let popup = $state(true);
 </script>
 
-{#if $page.url.pathname.includes("gouv")}
+<PopupEnnuyeux bind:ouvert={popup}>
+	Cher hacker, nous vous prions de laisser notre site tranquille, et d'arrêter
+	de générer de erreurs {page.status}
+</PopupEnnuyeux>
+
+{#if page.url.pathname.includes("gouv")}
 	<h1>Erreur "pas de gouvernement" : c'est la sauce</h1>
 	<img
 		src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.francetvinfo.fr%2Fpictures%2F0RouEramwBS2mOLe0k5LSv5WCuc%2F1500x843%2F2020%2F09%2F22%2FphpTRPquJ.jpg&f=1&nofb=1&ipt=1bb2f6b68f484a40203ff2dbc6f19eb26f48bb4b4841108386f1ef3912da5616&ipo=images"
 	/>
 {:else}
-	<h1>Erreur {$page.status} : c'est la sauce</h1>
+	<h1>Erreur {page.status} : c'est la sauce</h1>
 	<p>
-		Cher utilisateur, essaye de <a
+		Cher <s>utilisateur</s> hacker, essaye de <a
 			href="https://www.thoughtco.com/retourner-to-return-1370844">retourner</a
 		>
 		à <a href="http://la.org">la</a> <a href="https://page.net">page</a>

@@ -1,56 +1,35 @@
 <script lang="ts">
 	import type { Snippet } from "svelte";
-	import type { PopupControls } from "./Popup";
 	import Popup from "./Popup.svelte";
 	import PopupEnnuyeux from "./PopupEnnuyeux.svelte";
 	import Hidden from "./Hidden.svelte";
-	import cheats from "../states/cheats.svelte"
 
 	let {
 		children,
-		popup = $bindable(),
+		ouvert = $bindable(),
 		info,
 		memorisation,
 	}: {
 		children: Snippet;
-		popup?: PopupControls;
+		ouvert?: boolean;
 		info: string;
 		memorisation: string;
 	} = $props();
 
 	let entree = $state("Entrez le texte ici...");
 	// Varier son vocabulaire !
-	let infobulle: PopupControls = $state();
-	let popupErreur: PopupControls = $state();
+	let popupErreur: boolean = $state(false);
 
 	// TODO : mettre le 'ouvert' directement dans PopupControls, réactif et tout
-	let ouvert = $state(false);
 
 	function jeVeuxFermer() {
 		if (entree === memorisation) {
-			popup.fermer();
+			ouvert = false;
 		} else {
 			entree = "Entrez le texte EXACT ici...";
-			popupErreur.ouvrir();
+			popupErreur = true;
 		}
 	}
-
-	popup = {
-		async ouvrir() {
-			if (!(cheats.enabled && cheats.pasDeTutoriels)) {
-				ouvert = true;
-				entree = "Entrez le texte ici...";
-				await infobulle.ouvrir();
-			} else {
-				// Pas de tuto
-			}
-		},
-		fermer() {
-			ouvert = false;
-			popupErreur.fermer();
-			infobulle.fermer();
-		},
-	};
 </script>
 
 <div
@@ -60,7 +39,7 @@
 	{@render children()}
 </div>
 
-<Popup bind:popup={infobulle}>
+<Popup bind:ouvert={ouvert}>
 	<h1>Info utile : {info}</h1>
 	<p>
 		Pour être sûr d'avoir bien compris, veuillez recopier cette phrase : "{memorisation}"
@@ -82,7 +61,7 @@
 	</Hidden>
 </Popup>
 
-<PopupEnnuyeux bind:popup={popupErreur}>
+<PopupEnnuyeux bind:ouvert={popupErreur}>
 	Veuillez entrer correctement la phrase
 </PopupEnnuyeux>
 

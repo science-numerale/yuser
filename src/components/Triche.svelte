@@ -1,5 +1,5 @@
 <script lang="ts">
-	import cheats from "../states/cheats.svelte";
+	import triche from "../states/triche.svelte";
 
 	let dialogue: HTMLDialogElement;
 	let position = 0;
@@ -21,7 +21,7 @@
 			position++;
 
 			if (position === touches.length) {
-				cheats.enabled = !cheats.enabled;
+				triche.active = !triche.active;
 				position = 0;
 			}
 		} else {
@@ -30,7 +30,7 @@
 	}
 
 	$effect(() => {
-		if (cheats.enabled) {
+		if (triche.active) {
 			dialogue.show();
 		} else {
 			dialogue.close();
@@ -41,10 +41,10 @@
 <svelte:window onkeydown={intercepter} />
 
 <dialog class="cheat" bind:this={dialogue}>
-	Cheat activés !!!
+	Mode triche activé !!!
 	<ul>
 		<li>
-			<input type="checkbox" bind:checked={cheats.pasDeTutoriels} /> Pas de tutoriels
+			<input type="checkbox" bind:checked={triche.pasDeTutoriels} /> Pas de tutoriels
 		</li>
 	</ul>
 </dialog>
