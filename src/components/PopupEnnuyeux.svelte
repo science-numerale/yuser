@@ -49,7 +49,7 @@
 <Popup bind:popup={dialogue}>
 	{@render children()}
 	<br />
-	<span onclick={jeVeuxFermer}
+	<span role="button" tabindex="0" onkeydown={()=>{}} onclick={jeVeuxFermer}
 		><abbr title="Ne Pas Laisser Ce Popup Ouvert">NPLCPO</abbr></span
 	>
 </Popup>

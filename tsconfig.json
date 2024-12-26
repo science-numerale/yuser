@@ -1,9 +1,6 @@
 {
 	"extends": "./.svelte-kit/tsconfig.json",
 	"compilerOptions": {
-		//"target": "ES2022",
-		//"verbatimModuleSyntax": true,
-		//"isolatedModules": true,
 		"plugins": [
 			{
 				"name": "typescript-svelte-plugin",
@@ -11,10 +8,6 @@
 			}
 		]
 	},
-	"include": [
-		"src/**/*",
-		".svelte-kit/ambient.d.ts" // TODO : régler le problème du extends
-	],
 	"exclude": [
 		"node_modules/*",
 		"__sapper__/*",

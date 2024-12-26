@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { page } from "$app/state";
 
-	let param = page.url.searchParams.get("n")
-	let nom = param ? `la page n°${param}` : "la page mystère"
+	let param = page.url.searchParams.get("n"); // Malheureusement on doit utiliser les searchParams parceque les sites statiques ne permettent pas d'utiliser des paramètres dans les noms de pages...
+	let nom = param ? `la page n°${param}` : "la page mystère";
 </script>
 
 <h1>Bienvenue sur {nom}</h1>
