@@ -16,12 +16,42 @@
 					
           packages = with pkgs; [
 						deno
+						(writeShellScriptBin "setup" ''
+							${lib.getExe deno} install --allow-scripts
+						'')
+						(writeShellScriptBin "dev" ''
+							${lib.getExe deno} run dev
+						'')
           ];
 
           shellHook = ''
             echo "Bonjour, vous êtes bien dans l'environnement de développement de Yuser."
           '';
         };
+
+				packages.default = pkgs.stdenv.mkDerivation {
+					name = "Yuser";
+					src = ./.;
+
+					nativeBuildInputs = with pkgs; [
+						deno
+					];
+					buildPhase = ''
+						HOME="$(mktemp -d)"
+						deno install --allow-scripts
+						deno run build
+					'';
+					installPhase = ''
+						mkdir -p $out/test
+						cp -r build/* $out
+					'';
+
+					outputHashAlgo = "sha256";
+					outputHashMode = "recursive";
+					outputHash = "";
+
+					impureEnvVars = [ "NIX_HASH_ALGO" ];
+				};
       }
     );
 }

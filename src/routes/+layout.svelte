@@ -2,7 +2,7 @@
 	import "../app.css";
 	import { page } from "$app/state";
 	import { base } from "$app/paths";
-    import Triche from "../components/Triche.svelte";
+	import Triche from "../components/Triche.svelte";
 
 	let { children } = $props();
 	let selecteur = `${base}/selecteur`;

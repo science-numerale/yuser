@@ -17,7 +17,7 @@
 
 <nav>
 	<ul>
-		{#each Array(nombre).fill(null) as _, n}
+		{#each Array(nombre) as _, n}
 			<li>
 				<a href={`${base}/page?n=${n}`}>Page n°{n}</a>
 			</li>
