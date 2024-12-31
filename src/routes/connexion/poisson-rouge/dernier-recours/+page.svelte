@@ -12,12 +12,19 @@
 	let popup = $state(false);
 
 	let alphabet = "abcdefghijklmnopqrstuvwxyz";
-	let lettreAléatoire = () => alphabet[Math.floor(Math.random() * alphabet.length)];
+	let lettreAléatoire = () =>
+		alphabet[Math.floor(Math.random() * alphabet.length)];
 
 	let clé = Math.floor(Math.random() * 15);
 	let identifiant =
-		lettreAléatoire() + lettreAléatoire() + alphabet[clé + 9] + lettreAléatoire() + alphabet[clé] + alphabet[clé+3];
+		lettreAléatoire() +
+		lettreAléatoire() +
+		alphabet[clé + 9] +
+		lettreAléatoire() +
+		alphabet[clé] +
+		alphabet[clé + 3];
 </script>
+
 <p>
 	Pour retrouver ton identifiant, tu aura besoin de fournir deux information qui
 	t'identifient, au choix
@@ -70,8 +77,12 @@
 	<ul>
 		{@render aFaire(1, "Publier les informations sur X")}
 		{@render aFaire(2, "Désactiver les protections sur le compte bancaire")}
-		{@render aFaire(3, "Obtenir l'identifiant", () => alert(`L'identifiant n'est pas sdjruv, mais c'est ${identifiant}`))}
-		{@render aFaire(4, "Tenter de se connecter à nouveau", () => goto(`${base}/connexion`))}
+		{@render aFaire(3, "Obtenir l'identifiant", () =>
+			alert(`L'identifiant n'est pas sdjruv, mais c'est ${identifiant}`),
+		)}
+		{@render aFaire(4, "Tenter de se connecter à nouveau", () =>
+			goto(`${base}/connexion`),
+		)}
 	</ul>
 </Popup>
 

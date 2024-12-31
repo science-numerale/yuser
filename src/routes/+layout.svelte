@@ -5,15 +5,15 @@
 	import Triche from "../components/Triche.svelte";
 
 	let { children } = $props();
-	let selecteur = `${base}/selecteur`;
+	let sélecteur = `${base}/selecteur`;
 </script>
 
 <div class="app">
 	<Triche />
 	<div style="margin: 1rem;">
 		<a
-			aria-current={page.url.pathname === selecteur ? "page" : undefined}
-			href={selecteur}>Sélecteur de page</a
+			aria-current={page.url.pathname === sélecteur ? "page" : undefined}
+			href={sélecteur}>Sélecteur de page</a
 		>
 	</div>
 
@@ -23,7 +23,7 @@
 
 	<footer>
 		<p>
-			Pied de page {#if Math.random() < 0.01}très rare{/if}
+			Pied de page{#if Math.random() < 0.01} très rare{/if}
 		</p>
 	</footer>
 </div>

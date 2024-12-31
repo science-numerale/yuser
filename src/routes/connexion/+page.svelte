@@ -5,13 +5,15 @@
 
 	let alphabet = "abcdefghijklmnopqrstuvwxyz";
 	let longueurInitiale = Math.floor(Math.random() * 10) + 1;
-	let slider = $state(longueurInitiale);
+	let glisseur = $state(longueurInitiale);
 	let longueur = $state(longueurInitiale);
 	let mdpOublié = $state(false);
 
 	let identifiant = $state({});
 	for (let i = 0; i < 10; i++) {
-		identifiant[i] = alphabet.charAt(Math.floor(Math.random() * alphabet.length))
+		identifiant[i] = alphabet.charAt(
+			Math.floor(Math.random() * alphabet.length),
+		);
 	}
 
 	function seConnecter() {
@@ -21,7 +23,7 @@
 				identifiant[2] === alphabet[clé + 9] &&
 				identifiant[5] === alphabet[clé + 3]
 			) {
-				alert("Vous êtes connecté !")
+				alert("Vous êtes connecté !");
 				compte.connecté = true;
 			}
 		}
@@ -38,12 +40,12 @@
 		<span>Longueur de l'identifiant : </span>
 		<input
 			type="range"
-			bind:value={slider}
+			bind:value={glisseur}
 			min={0}
 			max={10}
 			onmouseup={() =>
 				setTimeout(() => {
-					longueur = slider;
+					longueur = glisseur;
 				}, 1000)}
 		/>
 	</li>
@@ -52,9 +54,7 @@
 		<span>Identifiant ({longueur} lettres) : </span>
 		{#each Array(longueur) as _, n}
 			<br />
-			<select
-				bind:value={identifiant[n]}
-			>
+			<select bind:value={identifiant[n]}>
 				{#each alphabet as lettre}
 					<option>{lettre}</option>
 				{/each}
@@ -71,9 +71,9 @@
 </ul>
 
 {#if mdpOublié}
-	<button onclick={() => goto(`${base}/connexion/poisson-rouge`)}
-		>Se connecter malgrès l'oubli d'identifiant (parcours déconseillé)</button
-	>
+	<button onclick={() => goto(`${base}/connexion/poisson-rouge`)}>
+		Se connecter malgré l'oubli d'identifiant (parcours déconseillé)
+	</button>
 {:else}
 	<button onclick={seConnecter}>Se connecter maintenant</button>
 {/if}
