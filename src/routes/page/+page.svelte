@@ -6,4 +6,7 @@
 </script>
 
 <h1>Bienvenue sur {nom}</h1>
-<p>Malheureusement, {nom} n'existe pas encore</p>
+<p>
+	Malheureusement, {nom} n'existe pas encore Peut-être recherchiez-vous
+	<a href={`https://duck.com?q=${nom}`}>cela</a>...
+</p>
