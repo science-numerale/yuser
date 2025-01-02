@@ -62,7 +62,6 @@
 	:global(*) {
 		border: solid lime;
 	}
-
 	:global(body) {
 		background: red;
 	}
