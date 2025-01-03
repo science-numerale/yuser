@@ -37,6 +37,10 @@
 </div>
 
 <style>
+	main, footer {
+		margin: 1rem;
+	}
+
 	h1 {
 		color: white;
 		background-color: green;

@@ -2,6 +2,6 @@ import localStorageState from "./storage.svelte"
 
 let def = { connecté: false }
 
-let stated = localStorageState("compte", def)
+let compte = localStorageState("compte", def)
 
-export default stated
+export default compte

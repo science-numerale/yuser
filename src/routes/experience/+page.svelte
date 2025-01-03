@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { onMount } from "svelte";
 	import TutoPopup from "../../components/TutoPopup.svelte";
+	import Triche from "../../components/Triche.svelte";
+	import triche from "../../states/triche.svelte";
 
 	let tuto1: boolean = $state(false);
 	let tuto2: boolean = $state(false);
@@ -56,17 +58,19 @@
 		"Une enclume flotte dans du mercure liquide.",
 	];
 
-	onMount(() => {
-		tuto1 = true;
-	});
+	if (!triche.pasDeTutoriels) {
+		onMount(() => {
+			tuto1 = true;
+		});
 
-	// TODO : Faire ça plus proprement
-	$effect(() => {
-		tuto2 = !tuto1;
-	});
-	$effect(() => {
-		tuto3 = !tuto1 && !tuto2;
-	});
+		// TODO : Faire ça plus proprement
+		$effect(() => {
+			tuto2 = !tuto1;
+		});
+		$effect(() => {
+			tuto3 = !tuto1 && !tuto2;
+		});
+	}
 </script>
 
 <TutoPopup
@@ -75,7 +79,7 @@
 	memorisation="Je peux cliquer sur le bouton auquel le popup fait référence, c'est-à-dire celui dont l'encadrement est rouge"
 >
 	<button
-		onclick={() => info = faits[Math.floor(Math.random() * faits.length)]}
+		onclick={() => (info = faits[Math.floor(Math.random() * faits.length)])}
 	>
 		Obtenir une information inutile
 	</button>
