@@ -37,9 +37,9 @@
 </p>
 
 <p>
-	{formuler("pouvoir", personnalisation, true)} y faire plein de chose ! Il est conseillé
+	{formuler("pouvoir", true)} y faire plein de chose ! Il est conseillé
 	tout de même de se connecter pour débloquer des fonctionnalités supplémentaires.
-	{formuler("pouvoir", personnalisation, true)} retrouver tout ça sur le
+	{formuler("pouvoir", true)} retrouver tout ça sur le
 	<a href={`${base}/selecteur`}>séleteur de page</a>.
 </p>
 

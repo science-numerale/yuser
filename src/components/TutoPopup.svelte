@@ -16,7 +16,7 @@
 		memorisation: string;
 	} = $props();
 
-	let entree = $state("Entrez le texte ici...");
+	let entree = $state("Entrer le texte ici...");
 	// Varier son vocabulaire !
 	let popupErreur: boolean = $state(false);
 
@@ -26,7 +26,7 @@
 		if (entree === memorisation) {
 			ouvert = false;
 		} else {
-			entree = "Entrez le texte EXACT ici...";
+			entree = "Entrer le texte EXACT ici...";
 			popupErreur = true;
 		}
 	}
@@ -42,7 +42,7 @@
 <Popup bind:ouvert={ouvert}>
 	<h1>Info utile : {info}</h1>
 	<p>
-		Pour être sûr d'avoir bien compris, veuillez recopier cette phrase : "{memorisation}"
+		Pour être sûr d'avoir bien compris, il faut recopier cette phrase : "{memorisation}"
 	</p>
 	<input
 		style="caret-color: transparent;"
@@ -62,7 +62,7 @@
 </Popup>
 
 <PopupEnnuyeux bind:ouvert={popupErreur}>
-	Veuillez entrer correctement la phrase
+	Il faut entrer correctement la phrase
 </PopupEnnuyeux>
 
 <style>

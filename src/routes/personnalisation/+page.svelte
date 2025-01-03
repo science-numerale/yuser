@@ -1,10 +1,9 @@
 <script>
-	import { formuler, obtPersonne, obtPronom } from "../../components/conjugaison.svelte";
+	import { formuler } from "../../components/conjugaison.svelte";
 	import personnalisation from "../../states/personnalisation.svelte";
 </script>
 
-{JSON.stringify(obtPersonne(personnalisation))}
-{formuler("pouvoir", personnalisation)}
+{formuler("pouvoir")}
 <br>
 <input type="number" bind:value={personnalisation.type}>
 <input type="number" bind:value={personnalisation.respect}>

@@ -2,10 +2,10 @@
 	import { goto } from "$app/navigation";
 	import { base } from "$app/paths";
 	import {
+		ajouterMajuscule,
+		COD,
 		formuler,
-		obtPersonne,
-		obtPossessif,
-		obtPronom,
+		possessif,
 	} from "../../components/conjugaison.svelte";
 	import compte from "../../states/compte.svelte";
 	import personnalisation from "../../states/personnalisation.svelte";
@@ -38,22 +38,9 @@
 </script>
 
 <p>
-	{formuler("avoir", personnalisation, true, "iterrogatif")} besoin de {obtPronom(
-		"COD",
-		obtPersonne(personnalisation),
-		personnalisation.genre,
-		true,
-	)} connecter au site pour quelque raison ? Il ne faut plus hésiter ! {formuler(
-		"pouvoir",
-		personnalisation,
-		true,
-	)}
-	{obtPronom(
-		"COD",
-		obtPersonne(personnalisation),
-		personnalisation.genre,
-		true,
-	)} connecter dès maintenant sur cette page :
+	{formuler("avoir", true, "iterrogatif")} besoin de {COD(true)} connecter au site
+	pour quelque raison ? Il ne faut plus hésiter ! {formuler("pouvoir", true)}
+	{COD(true)} connecter dès maintenant sur cette page :
 </p>
 
 <ul>
@@ -87,14 +74,19 @@
 
 	<li>
 		<input bind:checked={mdpOublié} type="checkbox" />
-		<span>{formuler("avoir", personnalisation, true)} oublié {obtPossessif(obtPersonne(personnalisation), {nombre: "s", genre: "m"})} identifiant tel { personnalisation.nombre > 1 ? "des" : "un" } poisson rouge</span>
+		<span
+			>{formuler("avoir", true)} oublié {possessif({ nombre: "p", genre: "m" })}
+			identifiant tel {personnalisation.nombre > 1 ? "des" : "un"} poisson rouge</span
+		>
 	</li>
 </ul>
 
 {#if mdpOublié}
 	<button onclick={() => goto(`${base}/connexion/poisson-rouge`)}>
-		Se connecter malgré l'oubli d'identifiant (parcours déconseillé)
+		{ajouterMajuscule(COD())} connecter malgré l'oubli d'identifiant (parcours déconseillé)
 	</button>
 {:else}
-	<button onclick={seConnecter}>Se connecter maintenant</button>
+	<button onclick={seConnecter}
+		>{ajouterMajuscule(COD(true))} connecter maintenant</button
+	>
 {/if}
