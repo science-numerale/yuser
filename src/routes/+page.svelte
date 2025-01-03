@@ -27,7 +27,7 @@
 	{#if nePas}
 		<span class="hidden">Ne pas</span>
 	{/if}
-	<span role="none" onclick={confirmer}>démarer</span> l'expérience !!!
+	<span role="none" onclick={confirmer}>démarrer</span> l'expérience !!!
 </button>
 
 <p>
@@ -43,9 +43,19 @@
 	<a href={`${base}/selecteur`}>séleteur de page</a>.
 </p>
 
-<span class="small"
-	><input type="checkbox" bind:checked={nePas} />Afficher "ne pas"</span
->
+<p class="small">
+	<button
+		onclick={() => {
+			nePas = !nePas;
+		}}
+		style="
+		background-color: {nePas ? 'white' : 'blue'};
+		border: 'none'
+	"
+		>{#if nePas}✔{:else}<span style="color: white">✘</span>{/if}</button
+	>
+	Afficher "ne pas"
+</p>
 
 <PopupEnnuyeux bind:ouvert={popup}>
 	Voulez-vous <span role="none" onclick={démarrer} style="cursor: pointer;">
@@ -67,8 +77,5 @@
 	}
 	.small {
 		font-size: small;
-	}
-	input {
-		transform: scale(0.5);
 	}
 </style>
