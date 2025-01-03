@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from "svelte";
 	import Popup from "../../components/Popup.svelte";
+    import { possessif } from "../../components/conjugaison.svelte";
 
 	let nombre = $state(20);
 	let erreur = $state(true);
@@ -36,8 +37,8 @@
 {/each}
 
 <dialog open>
-	<h1>VOTRE ORDINATEUR À ÉTÉ INFECTÉ !!!</h1>
-	<p>Appelez le <code>08 90 10 10 00</code></p>
+	<h1>{possessif({nombre: "s", genre: "m"}).toUpperCase()} ORDINATEUR À ÉTÉ INFECTÉ !!!</h1>
+	<p>Appeler le <code>08 90 10 10 00</code></p>
 	<button onclick={CLIC} class="bigredbutton">Réparer MAINTENANT !!!*</button>
 	<br />
 	<small>
@@ -56,15 +57,14 @@
 	></Popup
 >
 
-<svelte:body />
-
 <style>
-	:global(*) {
-		border: solid lime;
-	}
-	:global(body) {
-		background: red;
-	}
+	/*:global(*) {*/
+	/*	border: solid lime;*/
+	/*}*/
+	/*:global(body) {*/
+	/*	background: red;*/
+	/*}*/
+	/*Ce code provoque des bugs*/
 
 	.bigredbutton {
 		background: red;

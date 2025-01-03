@@ -22,9 +22,12 @@
 						(writeShellScriptBin "dev" ''
 							${lib.getExe deno} run dev
 						'')
+
+						bashInteractive # https://discourse.nixos.org/t/interactive-bash-with-nix-develop-flake/15486
           ];
 
           shellHook = ''
+						export SHELL=${pkgs.lib.getExe pkgs.bashInteractive}
             echo "Bonjour, vous êtes bien dans l'environnement de développement de Yuser."
           '';
         };

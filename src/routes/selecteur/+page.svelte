@@ -13,19 +13,30 @@
 	});
 
 	let maison = Math.floor(Math.random() * 200);
+	let pages = {
+		"Maison": "/",
+		"Connexion": "/connexion"
+	}
+
+	let positions = {};
+	for (const i of Object.keys(pages)) {
+		positions[i] = Math.floor(Math.random() * 200);
+	}
 </script>
 
 <nav>
 	<ul>
-		{#each Array(nombre) as _, n}
+		{#each Array(nombre) as _, i}
 			<li>
-				<a href={`${base}/page?n=${n}`}>Page n°{n}</a>
+				<a href={`${base}/page?n=${i}`}>Page n°{i}</a>
 			</li>
-			{#if n === maison}
-				<li>
-					<a href={`${base}/`}>Maison</a>
-				</li>
-			{/if}
+			{#each Object.entries(positions) as [page, pos]}
+				{#if i === pos}
+					<li>
+						<a href={base + pages[page]}>{page}</a>
+					</li>
+				{/if}
+			{/each}
 		{/each}
 	</ul>
 </nav>

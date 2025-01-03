@@ -1,11 +1,20 @@
 <script lang="ts">
 	import { goto } from "$app/navigation";
 	import { base } from "$app/paths";
+	import {
+    ajouterMajuscule,
+		formuler,
+		possessif,
+	} from "../../../../components/conjugaison.svelte";
 	import Popup from "../../../../components/Popup.svelte";
+	import personnalisation from "../../../../states/personnalisation.svelte";
 
-	let option1 = $state("Ton nom");
+	let fem = ajouterMajuscule(possessif({nombre:"s", genre: "f"}))
+	let masc = ajouterMajuscule(possessif({nombre:"s", genre: "m"}))
+
+	let option1 = $state(`${masc} nom`);
 	let réponse1 = $state("");
-	let option2 = $state("Ton code de carte bancaire");
+	let option2 = $state(`${masc} code de carte bancaire`);
 	let réponse2 = $state("");
 
 	let étape = $state(1);
@@ -26,36 +35,39 @@
 </script>
 
 <p>
-	Pour retrouver ton identifiant, tu aura besoin de fournir deux information qui
-	t'identifient, au choix
+	Pour retrouver {possessif({
+		nombre: "s",
+		genre: "m",
+	})} identifiant, {formuler("avoir")} besoin de fournir deux information spécifiques,
+	au choix
 </p>
 <ul>
 	<li>
 		<span>Information n°1 : </span>
 		<select bind:value={option1}>
-			<option>Ton nom</option>
-			<option>Ton prénom</option>
-			<option>Ta date de naissance</option>
-			<option>Ton adresse e-mail</option>
-			<option>Ton sexe</option>
-			<option>Ta nationalité</option>
+			<option>{masc} nom</option>
+			<option>{masc} prénom</option>
+			<option>{fem} date de naissance</option>
+			<option>{masc} adresse e-mail</option>
+			<option>{masc} sexe</option>
+			<option>{fem} nationalité</option>
 		</select>
 		<br />
-		<span>Saisis {option1.toLowerCase()} ici : </span>
+		<span>Saisir {option1.toLowerCase()} ici : </span>
 		<input bind:value={réponse1} type="text" />
 	</li>
 	<li>
 		<span>Information n°2 : </span>
 		<select bind:value={option2}>
-			<option>Ton code de carte bancaire</option>
-			<option>Ton numéro de sécurité sociale</option>
-			<option>Ton mot de passe Paypal</option>
+			<option>{masc} code de carte bancaire</option>
+			<option>{masc} numéro de sécurité sociale</option>
+			<option>{masc} mot de passe Paypal</option>
 			<option>Le code d'accès de ton immeuble</option>
-			<option>Ton empreinte génétique complète</option>
+			<option>{masc} empreinte génétique complète</option>
 			<option>Le code d'accès aux armes nucléaires</option>
 		</select>
 		<br />
-		<span>Saisis {option2.toLowerCase()} ici : </span>
+		<span>Saisir {option2.toLowerCase()} ici : </span>
 		<input bind:value={réponse2} type="text" />
 	</li>
 </ul>
@@ -70,7 +82,7 @@
 		réponse2.length > 10
 	)}
 >
-	Générer ton indentifiant temporaire
+	Générer {masc.toLowerCase()} indentifiant temporaire
 </button>
 
 <Popup bind:ouvert={popup}>

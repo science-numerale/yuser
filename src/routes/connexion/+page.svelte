@@ -1,7 +1,14 @@
 <script lang="ts">
 	import { goto } from "$app/navigation";
 	import { base } from "$app/paths";
+	import {
+		ajouterMajuscule,
+		COD,
+		formuler,
+		possessif,
+	} from "../../components/conjugaison.svelte";
 	import compte from "../../states/compte.svelte";
+	import personnalisation from "../../states/personnalisation.svelte";
 
 	let alphabet = "abcdefghijklmnopqrstuvwxyz";
 	let longueurInitiale = Math.floor(Math.random() * 10) + 1;
@@ -31,8 +38,9 @@
 </script>
 
 <p>
-	Besoin de se connecter au site pour quelque raison ? N'hésitez-plus !
-	Connectez-vous dès maintenant sur cette page :
+	{formuler("avoir", true, "iterrogatif")} besoin de {COD(true)} connecter au site
+	pour quelque raison ? Il ne faut plus hésiter ! {formuler("pouvoir", true)}
+	{COD(true)} connecter dès maintenant sur cette page :
 </p>
 
 <ul>
@@ -66,14 +74,19 @@
 
 	<li>
 		<input bind:checked={mdpOublié} type="checkbox" />
-		<span>J'ai oublié mon identifiant tel un poisson rouge</span>
+		<span
+			>{formuler("avoir", true)} oublié {possessif({ nombre: "p", genre: "m" })}
+			identifiant tel {personnalisation.nombre > 1 ? "des" : "un"} poisson rouge</span
+		>
 	</li>
 </ul>
 
 {#if mdpOublié}
 	<button onclick={() => goto(`${base}/connexion/poisson-rouge`)}>
-		Se connecter malgré l'oubli d'identifiant (parcours déconseillé)
+		{ajouterMajuscule(COD())} connecter malgré l'oubli d'identifiant (parcours déconseillé)
 	</button>
 {:else}
-	<button onclick={seConnecter}>Se connecter maintenant</button>
+	<button onclick={seConnecter}
+		>{ajouterMajuscule(COD(true))} connecter maintenant</button
+	>
 {/if}
