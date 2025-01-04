@@ -1,10 +1,8 @@
 <script lang="ts">
 	import { goto } from "$app/navigation";
 	import { base } from "$app/paths";
-	import { formuler } from "../components/conjugaison.svelte";
+	import { formuler } from "../components/francais";
 	import PopupEnnuyeux from "../components/PopupEnnuyeux.svelte";
-	import personnalisation from "../states/personnalisation.svelte";
-
 	let nePas = $state(true);
 	let popup: boolean = $state(false);
 
@@ -37,9 +35,7 @@
 </p>
 
 <p>
-	{formuler("pouvoir", true)} y faire plein de chose ! Il est conseillé tout de même
-	de se connecter pour débloquer des fonctionnalités supplémentaires.
-	{formuler("pouvoir", true)} retrouver tout ça sur le
+	{formuler("$v/pouvoir/présent/affirmatif/m  y faire plein de chose ! Il est conseillé tout de même de se connecter pour débloquer des fonctionnalités supplémentaires. $v/pouvoir/présent/affirmatif/m  retrouver tout ça sur le")}
 	<a href={`${base}/selecteur`}>séleteur de page</a>.
 </p>
 

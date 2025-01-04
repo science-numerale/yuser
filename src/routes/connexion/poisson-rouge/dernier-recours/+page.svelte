@@ -1,16 +1,11 @@
 <script lang="ts">
 	import { goto } from "$app/navigation";
 	import { base } from "$app/paths";
-	import {
-    ajouterMajuscule,
-		formuler,
-		possessif,
-	} from "../../../../components/conjugaison.svelte";
+	import {formuler} from "../../../../components/francais"
 	import Popup from "../../../../components/Popup.svelte";
-	import personnalisation from "../../../../states/personnalisation.svelte";
 
-	let fem = ajouterMajuscule(possessif({nombre:"s", genre: "f"}))
-	let masc = ajouterMajuscule(possessif({nombre:"s", genre: "m"}))
+	let fem = ""//ajouterMajuscule(possessif({nombre:"s", genre: "f"}))
+	let masc = ""//ajouterMajuscule(possessif({nombre:"s", genre: "m"}))
 
 	let option1 = $state(`${masc} nom`);
 	let réponse1 = $state("");
@@ -35,10 +30,7 @@
 </script>
 
 <p>
-	Pour retrouver {possessif({
-		nombre: "s",
-		genre: "m",
-	})} identifiant, {formuler("avoir")} besoin de fournir deux information spécifiques,
+	Pour retrouver //chantier\\ identifiant, {formuler("$v/avoir/présent/affirmatif/m ")} besoin de fournir deux information spécifiques,
 	au choix
 </p>
 <ul>
