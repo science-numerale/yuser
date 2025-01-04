@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { onMount } from "svelte";
 	import triche from "../../states/triche.svelte";
-	import { formuler, possessif } from "../../components/conjugaison.svelte";
 	import TutoPopup from "./TutoPopup.svelte";
 	import InfoUtiles from "./InfoUtiles.svelte";
+	import { formuler } from "../../components/francais";
 
 	let tuto1: boolean = $state(false);
 	let tuto2: boolean = $state(false);
@@ -30,8 +30,7 @@
 	bind:ouvert={tuto1}
 	info="Ce bouton est cliquable"
 	memorisation="{formuler(
-		'pouvoir',
-		true,
+		'$v/pouvoir/présent/affirmatif/m ',
 	)} cliquer sur le bouton auquel le popup fait référence, c'est-à-dire celui dont l'encadrement est rouge"
 >
 	<InfoUtiles bind:infos />
@@ -41,8 +40,7 @@
 	bind:ouvert={tuto2}
 	info="Ce bouton est cliquable"
 	memorisation="{formuler(
-		'pouvoir',
-		true,
+		'$v/pouvoir/présent/affirmatif/m ',
 	)} cliquer sur le bouton auquel le popup fait référence, c'est-à-dire celui dont l'encadrement est rouge, et qui n'affiche pas le nombre {Math.random().toString()}"
 >
 	<button onclick={() => alert("Arrête de poser des questions, toi, là !")}>
@@ -54,8 +52,7 @@
 	bind:ouvert={tuto3}
 	info="Ce bouton n'est pas cliquable"
 	memorisation="{formuler(
-		'comprendre',
-		true,
+		'$v/comprendre/présent/affirmatif/m ',
 	)} que les développeurs n'aient pas eu le temps de coder cette fonctionnalité"
 >
 	<button disabled style="cursor: wait;">
