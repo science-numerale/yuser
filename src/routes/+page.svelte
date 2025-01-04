@@ -37,25 +37,26 @@
 </p>
 
 <p>
-	{formuler("pouvoir", true)} y faire plein de chose ! Il est conseillé
-	tout de même de se connecter pour débloquer des fonctionnalités supplémentaires.
+	{formuler("pouvoir", true)} y faire plein de chose ! Il est conseillé tout de même
+	de se connecter pour débloquer des fonctionnalités supplémentaires.
 	{formuler("pouvoir", true)} retrouver tout ça sur le
 	<a href={`${base}/selecteur`}>séleteur de page</a>.
 </p>
 
-<p class="small">
+<div class="small">
 	<button
 		onclick={() => {
 			nePas = !nePas;
 		}}
 		style="
-		background-color: {nePas ? 'white' : 'blue'};
+		{nePas ? 'background: white;' : ''}
+		color: grey;
 		border: 'none'
 	"
 		>{#if nePas}✔{:else}<span style="color: white">✘</span>{/if}</button
 	>
 	Afficher "ne pas"
-</p>
+</div>
 
 <PopupEnnuyeux bind:ouvert={popup}>
 	Voulez-vous <span role="none" onclick={démarrer} style="cursor: pointer;">
@@ -76,6 +77,8 @@
 		color: gray;
 	}
 	.small {
-		font-size: small;
+		transform: scale(50%);
+		transform-origin: left;
+		opacity: 50%;
 	}
 </style>

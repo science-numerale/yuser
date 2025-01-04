@@ -14,9 +14,11 @@
 
 	let maison = Math.floor(Math.random() * 200);
 	let pages = {
-		"Maison": "/",
-		"Connexion": "/connexion"
-	}
+		Maison: "/",
+		Connexion: "/connexion",
+		"À propos": "/apropos",
+		"Sélecteur de page": "/selecteur"
+	};
 
 	let positions = {};
 	for (const i of Object.keys(pages)) {
@@ -42,5 +44,5 @@
 </nav>
 <div
 	bind:this={divCool}
-	style="position: absolute; bottom: 0; height: 1000dvh; width: 100%;"
+	style="position: absolute; bottom: 0; height: 1000dvh;"
 ></div>

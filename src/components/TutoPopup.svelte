@@ -2,7 +2,7 @@
 	import type { Snippet } from "svelte";
 	import Popup from "./Popup.svelte";
 	import PopupEnnuyeux from "./PopupEnnuyeux.svelte";
-	import Hidden from "./Hidden.svelte";
+	import Cache from "./Cache.svelte";
 
 	let {
 		children,
@@ -17,10 +17,7 @@
 	} = $props();
 
 	let entree = $state("Entrer le texte ici...");
-	// Varier son vocabulaire !
 	let popupErreur: boolean = $state(false);
-
-	// TODO : mettre le 'ouvert' directement dans PopupControls, réactif et tout
 
 	function jeVeuxFermer() {
 		if (entree === memorisation) {
@@ -39,7 +36,7 @@
 	{@render children()}
 </div>
 
-<Popup bind:ouvert={ouvert}>
+<Popup bind:ouvert>
 	<h1>Info utile : {info}</h1>
 	<p>
 		Pour être sûr d'avoir bien compris, il faut recopier cette phrase : "{memorisation}"
@@ -51,14 +48,14 @@
 	/>
 	<button onclick={jeVeuxFermer}>Fermer cette information utile</button>
 
-	<Hidden>
+	<Cache>
 		<button
 			class="hidden"
 			onclick={() => {
 				entree = memorisation;
 			}}>Remplir</button
 		>
-	</Hidden>
+	</Cache>
 </Popup>
 
 <PopupEnnuyeux bind:ouvert={popupErreur}>

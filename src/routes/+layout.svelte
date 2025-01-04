@@ -17,7 +17,17 @@
 				<a
 					aria-current={page.url.pathname === sélecteur ? "page" : undefined}
 					href={sélecteur}
-					>Sélecteur de page
+				>
+					Sélecteur de page
+				</a>
+			</li>
+			<li>
+				<a
+					aria-current={page.url.pathname === sélecteur ? "page" : undefined}
+					href={page.url.href}
+					onclick={()=>alert("Veuillez aller sur le sélécteur de page")}
+				>
+					Autres pages
 				</a>
 			</li>
 		</ul>
@@ -37,37 +47,38 @@
 </div>
 
 <style>
-	main, footer {
+	main,
+	footer {
 		margin: 1rem;
 	}
 
 	h1 {
+		margin: 1rem;
+	}
+
+	header {
+		background: #006600;
 		color: white;
-		background-color: green;
-		padding: 2%;
-		padding-bottom: 0.5%;
-		margin: 0;
+		overflow: hidden;
+		padding: 1rem;
 	}
 	ul {
+		display: flex;
 		list-style-type: none;
-		margin: 0;
 		padding: 0;
-		overflow: hidden;
-		background-color: green;
 	}
 
 	li {
 		float: left;
 	}
 
-	li a {
-		display: block;
+	li > * {
 		color: white;
 		text-align: center;
-		padding: 15px;
+		padding: 0.5rem 1rem;
 		text-decoration: none;
 	}
-	li a:hover {
-		background-color: rgb(43, 43, 43);
+	li > *:hover {
+		background: var(--hover-accent-color-1);
 	}
 </style>

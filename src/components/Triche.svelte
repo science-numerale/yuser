@@ -21,7 +21,7 @@
 			position++;
 
 			if (position === touches.length) {
-				triche.active = !triche.active;
+				triche.activée = !triche.activée;
 				position = 0;
 			}
 		} else {
@@ -30,7 +30,7 @@
 	}
 
 	$effect(() => {
-		if (triche.active) {
+		if (triche.activée) {
 			dialogue.show();
 		} else {
 			dialogue.close();

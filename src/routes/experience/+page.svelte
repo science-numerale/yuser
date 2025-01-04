@@ -58,7 +58,7 @@
 		"Une enclume flotte dans du mercure liquide.",
 	];
 
-	if (!triche.pasDeTutoriels) {
+	if (!(triche.activée && triche.pasDeTutoriels)) {
 		onMount(() => {
 			tuto1 = true;
 		});
