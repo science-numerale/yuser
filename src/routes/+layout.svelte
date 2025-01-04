@@ -25,7 +25,7 @@
 				<a
 					aria-current={page.url.pathname === sélecteur ? "page" : undefined}
 					href={page.url.href}
-					onclick={()=>alert("Veuillez aller sur le sélécteur de page")}
+				onclick={()=>alert("Les autres pages sont disponibles sur le sélécteur de page")}
 				>
 					Autres pages
 				</a>

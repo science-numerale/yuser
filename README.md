@@ -10,7 +10,7 @@ Allez sur [le site GitHub Pages](https://science-numerale.github.io/yuser/)
 - Serveur de développement ([Vite](https://vite.dev/)) : `deno run dev`
 - Générer une page web statique dans `build/` : `deno run build`
 
-Ce projet est français, son code aussi. Nous recommandons d'utiliser des noms de variables français, en utilisant un vocabulaire aussi varié que possible.
+Ce projet est français, son code aussi. Nous recommandons d'utiliser des noms de variables français, en utilisant un vocabulaire aussi varié que possible. Les apostrophes sont les bien v'nus !
 
 # Bloqué à une étape ?
 

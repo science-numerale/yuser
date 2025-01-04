@@ -12,7 +12,6 @@
 		observer.observe(divCool);
 	});
 
-	let maison = Math.floor(Math.random() * 200);
 	let pages = {
 		Maison: "/",
 		Connexion: "/connexion",
@@ -22,9 +21,12 @@
 
 	let positions = {};
 	for (const i of Object.keys(pages)) {
-		positions[i] = Math.floor(Math.random() * 200);
+		positions[i] = Math.floor(Math.random() * 100);
 	}
+
 </script>
+
+<input onkeydown={(e)=>{e.preventDefault(); alert("La recherche n'est pas encore disponible")}} value={"Rechercher ici..."}>
 
 <nav>
 	<ul>
