@@ -2,7 +2,7 @@
 	import { onMount } from "svelte";
 	import TutoPopup from "../../components/TutoPopup.svelte";
 	import triche from "../../states/triche.svelte";
-	import { formuler } from "../../components/francais";
+	import { conj } from "../../components/francais";
 
 	let tuto1: boolean = $state(false);
 	let tuto2: boolean = $state(false);
@@ -76,7 +76,7 @@
 <TutoPopup
 	bind:ouvert={tuto1}
 	info="Ce bouton est cliquable"
-	memorisation="{formuler("$v/pouvoir/présent/affirmatif/m ")} cliquer sur le bouton auquel le popup fait référence, c'est-à-dire celui dont l'encadrement est rouge"
+	memorisation="{conj("pouvoir", "présent", "affirmatif", true)} cliquer sur le bouton auquel le popup fait référence, c'est-à-dire celui dont l'encadrement est rouge"
 >
 	<button
 		onclick={() => (info = faits[Math.floor(Math.random() * faits.length)])}
@@ -88,7 +88,7 @@
 <TutoPopup
 	bind:ouvert={tuto2}
 	info="Ce bouton est cliquable"
-	memorisation="{formuler("$v/pouvoir/présent/affirmatif/m ")} cliquer sur le bouton auquel le popup fait référence, c'est-à-dire celui dont l'encadrement est rouge, et qui n'affiche pas le nombre {Math.random().toString()}"
+	memorisation="{conj("pouvoir", "présent", "affirmatif", true)} cliquer sur le bouton auquel le popup fait référence, c'est-à-dire celui dont l'encadrement est rouge, et qui n'affiche pas le nombre {Math.random().toString()}"
 >
 	<button onclick={() => alert("Arrête de poser des questions, toi, là !")}>
 		Savoir en quoi consiste l'expérience
@@ -98,7 +98,7 @@
 <TutoPopup
 	bind:ouvert={tuto3}
 	info="Ce bouton n'est pas cliquable"
-	memorisation="{formuler("$v/comprendre/présent/affirmatif/m ")} que les développeurs n'aient pas eu le temps de coder cette fonctionnalité"
+	memorisation="{conj("comprendre", "présent", "affirmatif", true)}} que les développeurs n'aient pas eu le temps de coder cette fonctionnalité"
 >
 	<button disabled style="cursor: wait;">
 		Désactiver les informations utiles

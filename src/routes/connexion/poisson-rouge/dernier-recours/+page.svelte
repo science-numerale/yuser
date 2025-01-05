@@ -1,11 +1,11 @@
 <script lang="ts">
 	import { goto } from "$app/navigation";
 	import { base } from "$app/paths";
-	import {formuler} from "../../../../components/francais"
+	import {conj, poss} from "../../../../components/francais"
 	import Popup from "../../../../components/Popup.svelte";
 
-	let fem = ""//ajouterMajuscule(possessif({nombre:"s", genre: "f"}))
-	let masc = ""//ajouterMajuscule(possessif({nombre:"s", genre: "m"}))
+	let fem = poss("s", "f").charAt(0).toUpperCase() + poss("s", "f").slice(1);
+	let masc = poss("s", "m").charAt(0).toUpperCase() + poss("s", "m").slice(1);
 
 	let option1 = $state(`${masc} nom`);
 	let réponse1 = $state("");
@@ -30,7 +30,7 @@
 </script>
 
 <p>
-	Pour retrouver //chantier\\ identifiant, {formuler("$v/avoir/présent/affirmatif/m ")} besoin de fournir deux information spécifiques,
+	Pour retrouver {poss("s","m")} identifiant, {conj("avoir", "présent", "affirmatif", true)} besoin de fournir deux information spécifiques,
 	au choix
 </p>
 <ul>

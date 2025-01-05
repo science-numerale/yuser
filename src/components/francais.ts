@@ -18,7 +18,7 @@ export function getGenre(): "m"|"f"|"i" {
     return "m"
 }
 
-let conjug = {
+const conjug = {
     "être": {
         "présent": {
             1: "suis",
@@ -29,12 +29,12 @@ let conjug = {
             6: "sont",
         },
         "impératif": {
-            1: "$v/être/subjonctif",
+            1: "",
             2: "sois",
-            3: "$v/être/subjonctif",
+            3: "",
             4: "soyons",
             5: "soyez",
-            6: "$v/être/subjonctif"
+            6: ""
         },
         "subjonctif": {
             1: "sois",
@@ -55,12 +55,12 @@ let conjug = {
             6: "ont",
         },
         "impératif": {
-            1: "$v/avoir/subjonctif",
+            1: "",
             2: "aie",
-            3: "$v/avoir/subjonctif",
+            3: "",
             4: "ayons",
             5: "ayez",
-            6: "$v/avoir/subjonctif"
+            6: ""
         },
         "subjonctif": {
             1: "aie",
@@ -81,12 +81,12 @@ let conjug = {
             6: "parlent",
         },
         "impératif": {
-            1: "$v/parler/subjonctif",
+            1: "",
             2: "parle",
-            3: "$v/parler/subjonctif",
+            3: "",
             4: "parlons",
             5: "parlez",
-            6: "$v/parler/subjonctif"
+            6: ""
         },
         "subjonctif": {
             1: "parle",
@@ -107,12 +107,12 @@ let conjug = {
             6: "peuvent",
         },
         "impératif": {
-            1: "$v/pouvoir/subjonctif",
-            2: "$v/pouvoir/subjonctif",
-            3: "$v/pouvoir/subjonctif",
-            4: "$v/pouvoir/subjonctif",
-            5: "$v/pouvoir/subjonctif",
-            6: "$v/pouvoir/subjonctif"
+            1: "",
+            2: "",
+            3: "",
+            4: "",
+            5: "",
+            6: ""
         },
         "subjonctif": {
             1: "puisse",
@@ -133,12 +133,12 @@ let conjug = {
             6: "veulent",
         },
         "impératif": {
-            1: "$v/vouloir/subjonctif",
-            2: "$v/vouloir/subjonctif",
-            3: "$v/vouloir/subjonctif",
+            1: "",
+            2: "",
+            3: "",
             4: "veuillons",
             5: "veuillez",
-            6: "$v/vouloir/subjonctif"
+            6: ""
         },
         "subjonctif": {
             1: "veuille",
@@ -159,12 +159,12 @@ let conjug = {
             6: "recherchent",
         },
         "impératif": {
-            1: "$v/rechercher/subjonctif",
+            1: "",
             2: "recherche",
-            3: "$v/rechercher/subjonctif",
+            3: "",
             4: "recherchons",
             5: "recherchez",
-            6: "$v/rechercher/subjonctif"
+            6: ""
         },
         "subjonctif": {
             1: "recherche",
@@ -185,12 +185,12 @@ let conjug = {
             6: "comprenent",
         },
         "impératif": {
-            1: "$v/comprendre/subjonctif",
+            1: "",
             2: "comprends",
-            3: "$v/comprendre/subjonctif",
+            3: "",
             4: "comprenons",
             5: "comprenez",
-            6: "$v/comprendre/subjonctif"
+            6: ""
         },
         "subjonctif": {
             1: "comprenne",
@@ -201,8 +201,34 @@ let conjug = {
             6: "comprennent",
         }
     },
+    "devoir": {
+        "présent": {
+            1: "dois",
+            2: "dois",
+            3: "doit",
+            4: "devons",
+            5: "devez",
+            6: "doivent",
+        },
+        "impératif": {
+            1: "",
+            2: "",
+            3: "",
+            4: "",
+            5: "",
+            6: ""
+        },
+        "subjonctif": {
+            1: "doive",
+            2: "doives",
+            3: "doive",
+            4: "dussions",
+            5: "dussiez",
+            6: "dussent",
+        }
+    },
 }
-let pronoms = {
+const pronoms = {
     "sujet": {
         1: "je",
         2: "tu",
@@ -226,60 +252,125 @@ let pronoms = {
         4: "nous",
         5: "vous",
         6: "se",
+    },
+}
+const possesifs = {
+    "s": {
+        "m": {
+            1: "mon",
+            2: "ton",
+            3: "son",
+            4: "notre",
+            5: "votre",
+            6: "leur"
+        },
+        "f": {
+            1: "ma",
+            2: "ta",
+            3: "sa",
+            4: "notre",
+            5: "votre",
+            6: "leur",
+        }
+    },
+    "p": {
+        "m": {
+            1: "mes",
+            2: "tes",
+            3: "ses",
+            4: "nos",
+            5: "vos",
+            6: "leurs"
+        },
+        "f": {
+            1: "mes",
+            2: "tes",
+            3: "ses",
+            4: "nos",
+            5: "vos",
+            6: "leurs"
+        },
+    }
+}
+const mots = {
+    "poisson": {
+        "s": {
+            "m": "poisson",
+            "f": "poisson"
+        },
+        "p": {
+            "m": "poissons",
+            "f": "poissons"
+        }
+    },
+    "rouge": {
+        "s": {
+            "m": "rouge",
+            "f": "rouge"
+        },
+        "p": {
+            "m": "rouges",
+            "f": "rouges"
+        }
+    },
+    "un": {
+        "s": {
+            "m": "un",
+            "f": "une"
+        },
+        "p": {
+            "m": "des",
+            "f": "des"
+        }
     }
 }
 
-export function evaluer(text:string): string {
-    let elems = text.slice(1, text.length).split("/");
+export function conj(v: keyof typeof conjug, temps = "présent", intention = "affirmatif", maj = false, r = false) {
     let output = "";
-    switch (elems[0]) {
-        case "v":
-            let verbe = conjug[elems[1]][elems[2]][getPersonne()]
-            let pronom = "";
-            if ([3, 6].includes(getPersonne())) {
-                pronom = pronoms.sujet[getPersonne()][getGenre()]
-            } else {
-                pronom = pronoms.sujet[getPersonne()]
-            }
-            let reflechi = "";
-            if (elems[4].includes("r")) {
-                reflechi = pronoms.réfléchi[getPersonne()] + " "
-            }
-            switch (elems[3]) {
-                case "affirmatif":
-                    switch (elems[2]) {
-                        case "présent":
-                            output=pronom + " " + reflechi + verbe;
-                            break
-                        case "impératif":
-                            if (verbe[0]=="$") {
-                                output=formuler(verbe+"/affirmatif/"+elems[4]+" ")
-                            } else {
-                                output = verbe // pas de réfléchi à l'impératif
-                            }
-                            break
-                        case "subjonctif":
-                            output="que " + pronom + " " + reflechi  + verbe
-                            break
+    let verbe = conjug[v][temps][getPersonne()]
+    let pronom = "";
+    if ([3, 6].includes(getPersonne())) {
+        pronom = pronoms.sujet[getPersonne()][getGenre()]
+    } else {
+        pronom = pronoms.sujet[getPersonne()]
+    }
+    let reflechi = "";
+    if (r) {
+        reflechi = pronoms.réfléchi[getPersonne()] + " "
+    }
+    switch (intention) {
+        case "affirmatif":
+            switch (temps) {
+                case "présent":
+                    output=pronom + " " + reflechi + verbe;
+                    break
+                case "impératif":
+                    if (verbe=="") {
+                        output = conj(v, "subjonctif", "affirmatif", maj, r)
+                    } else {
+                        output = verbe
                     }
                     break
-                case "interrogatif":
-                    switch (elems[2]) {
-                        case "présent":
-                            if (getPersonne()==1) {
-                                output="est-ce que je " + reflechi + verbe
-                            } else {
-                                if (["e", "i"].includes(pronom[0]) && !["d", "t"].includes(verbe[verbe.length-1])) {
-                                    output = reflechi + verbe + "-t-" + pronom
-                                } else {
-                                    output = reflechi + verbe + "-" + pronom
-                                }
-                            }
-                            break
-                            // évidemment, pas d'interrogatif impératif...
-                    }
+                case "subjonctif":
+                    output="que " + pronom + " " + reflechi  + verbe
+                    break
             }
             break
+        case "interrogatif":
+            switch (temps) {
+                case "présent":
+                    if (getPersonne()==1) {
+                        output="est-ce que je " + reflechi + verbe
+                    } else {
+                        if (["e", "i"].includes(pronom[0]) && !["d", "t"].includes(verbe[verbe.length-1])) {
+                            output = reflechi + verbe + "-t-" + pronom
+                        } else {
+                            output = reflechi + verbe + "-" + pronom
+                        }
+                    }
+                    break
+                    // évidemment, pas d'interrogatif impératif...
+            }
     }
     let outputs = output.split(" ");
     output = "";
@@ -292,23 +383,25 @@ export function evaluer(text:string): string {
         }
     }
     output += outputs[outputs.length-1]
-    if (elems[4].includes("m")) {
+    if (maj) {
         output = output.charAt(0).toUpperCase() + output.slice(1);
     }
     return output
 }
-
-export function formuler(text: string): string {
-    let output = "";
-    for (let i=0; i<text.length; i++) {
-        let char = text[i];
-        if (char=='$') {
-            output+=evaluer(text.slice(i, text.indexOf(" ", i)))
-            i+=text.slice(i, text.length).indexOf(" ")
-        } else {
-            output+=char
-        }
-    }
-    return output
+export function poss(nb: "s" | "p", g: "f" | "m"): string {
+    return possesifs[nb][g][getPersonne()]
 }
-
+export function COD() {
+    return pronoms.réfléchi[getPersonne()]
+}
+export function mot(n: keyof typeof mots): string {
+    let nb = "";
+    if ([1,2,3].includes(getPersonne())) {
+        nb = "s"
+    } else {
+        nb = "p"
+    }
+    let g = getGenre();
+    if (g=="i") {g = "m"}
+    return mots[n][nb][g]
+}
