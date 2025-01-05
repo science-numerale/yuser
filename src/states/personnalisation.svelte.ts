@@ -14,6 +14,6 @@ let def: Personnalisation = {
 	genre: "i"
 };
 
-let personnalisation = localStorageState("totoiement", def)
+let personnalisation = localStorageState("personnalisation", def)
 
 export default personnalisation

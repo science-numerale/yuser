@@ -1,10 +1,8 @@
 <script lang="ts">
 	import { goto } from "$app/navigation";
 	import { base } from "$app/paths";
-	import { formuler } from "../components/conjugaison.svelte";
+	import { conj } from "../components/francais.svelte";
 	import PopupEnnuyeux from "../components/PopupEnnuyeux.svelte";
-	import personnalisation from "../states/personnalisation.svelte";
-
 	let nePas = $state(true);
 	let popup: boolean = $state(false);
 
@@ -37,9 +35,8 @@
 </p>
 
 <p>
-	{formuler("pouvoir", true)} y faire plein de chose ! Il est conseillé tout de même
-	de se connecter pour débloquer des fonctionnalités supplémentaires.
-	{formuler("pouvoir", true)} retrouver tout ça sur le
+	{conj("pouvoir", "présent", "affirmatif", true)} y faire plein de chose ! Il est conseillé tout de même de se connecter pour 
+	débloquer des fonctionnalités supplémentaires. {conj("pouvoir", "présent", "affirmatif", true)} retrouver tout ça sur le
 	<a href={`${base}/selecteur`}>séleteur de page</a>.
 </p>
 
@@ -59,13 +56,13 @@
 </div>
 
 <PopupEnnuyeux bind:ouvert={popup}>
-	Voulez-vous <span role="none" onclick={démarrer} style="cursor: pointer;">
+	{conj("vouloir", "présent", "interrogatif", true, false).toString()} <span role="none" onclick={démarrer} style="cursor: pointer;">
 		démarrer
 	</span>
 	l'expérience ?
-	<button onclick={() => alert("Vous avez le choix")}>Pas sûr</button>
-	<button onclick={() => alert("Vous avez le temps qu'il vous faut")}>
-		Laissez moi du temps...
+	<button onclick={() => alert(conj("avoir", "présent", "affirmatif", true)+" le choix")}>Pas sûr</button>
+	<button onclick={() => alert(conj("avoir", "présent", "affirmatif", true)+" le temps qu'il vous faut")}>
+		Laissez  du temps...
 	</button>
 </PopupEnnuyeux>
 

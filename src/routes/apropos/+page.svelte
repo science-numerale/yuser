@@ -16,7 +16,7 @@
 	l’authenticité : sommes-nous vraiment ce que nous projetons dans cet espace
 	numérique, ou bien est-ce une simple facette de nous-mêmes que nous
 	choisissons de montrer au monde, comme un costume que l’on revêt pour un rôle
-	temporaire ?
+	temporaire ? Ne sommes-nous que des acteurs au théâtre de la vie ?
 </p>
 
 <p>
@@ -65,6 +65,18 @@
 	par le poids de la reconnaissance personnelle.
 </p>
 <!-- ChatGPT, sans le prompt exact -->
+<p>
+	Mais cette liberté est un concept auto-destructeur : car une liberté totale ne
+	signifie-t-elle pas la fin de toute forme de liberté ? Sommes-nous trop libres
+	dans cet autre monde qu'est celui du numérique ? S'agit-il là de la liberté 
+	que recherche l'Homme depuis son début, ou bien au contraire de sa mort ?
+	Car en étant qui nous souhaitons dans cet univers numérique, ne sommes-nous pas
+	personne ? L'identité humaine est ainsi rejetée, niée, pour ne laisser place qu'à 
+	la donnée, qu'au pseudonyme, un fichier sur un ordinateur. Et voilà qui nous 
+	sommes : nous sommes vous. Nous sommes eux. Nous sommes n'importe qui dans 
+	l'immensité du web, et tous à la fois. Nous sommes la concrétisation du rêve de 
+	l'Homme : la liberté. Et nous sommes sa mort tragique, sans espoir.
+</p>
 
 <h1>Pourquoi faisons-nous ça ?</h1>
 <p>
@@ -89,6 +101,18 @@
 	demande. C'est un acte pur de présence dans le monde numérique, un site web
 	qui vit pour la seule raison d'être, sans se soucier de savoir pourquoi.
 	<!-- ChatGPT : Tu doit expliquer en un long paragraphe rédiger l'existence d'un site web. Il n'y a aucune réelle raison, mais tu doit broder sur ça. Expliquer en beaucoup de texte ce manque de but (les fotes d'ortografe sont authentiques) -->
+</p>
+<p>
+	Et ce site web est le miroir de ce monde : on peut lui donner trop de sens, ou 
+	aucun. Il n'a aucune raison d'être, mais aucune de ne pas être, et c'est là le 
+	plus important : ce site web existe parce que personne ne nous a interdit de le 
+	faire, et également parce que personne ne voit l'intérêt de le faire. Nous faisons
+	ça parce que sinon quelqu'un d'autre l'aurait fait, et parce que sinon personne 
+	d'autre ne l'aurait fait. Et c'est un appel dans le vide que nous lançons : un 
+	appel qui ne s'adresse à personne pour aucune raison. Un appel à rien que personne 
+	n'écoute - n'entend. Mais nous lançons cet appel parce que nous le pouvons, nous avons 
+	le droit et la possibilité. Rien d'autre ne justifie ce site. Et c'est pourtant déjà
+	bien assez.
 </p>
 
 <a href="{base}/alerte">ATTENTION: ne pas cliquer.</a>

@@ -1,16 +1,11 @@
 <script lang="ts">
 	import { goto } from "$app/navigation";
 	import { base } from "$app/paths";
-	import {
-    ajouterMajuscule,
-		formuler,
-		possessif,
-	} from "../../../../components/conjugaison.svelte";
+	import {conj, poss} from "../../../../components/francais.svelte"
 	import Popup from "../../../../components/Popup.svelte";
-	import personnalisation from "../../../../states/personnalisation.svelte";
 
-	let fem = ajouterMajuscule(possessif({nombre:"s", genre: "f"}))
-	let masc = ajouterMajuscule(possessif({nombre:"s", genre: "m"}))
+	let fem = poss("s", "f").charAt(0).toUpperCase() + poss("s", "f").slice(1);
+	let masc = poss("s", "m").charAt(0).toUpperCase() + poss("s", "m").slice(1);
 
 	let option1 = $state(`${masc} nom`);
 	let réponse1 = $state("");
@@ -35,10 +30,7 @@
 </script>
 
 <p>
-	Pour retrouver {possessif({
-		nombre: "s",
-		genre: "m",
-	})} identifiant, {formuler("avoir")} besoin de fournir deux information spécifiques,
+	Pour retrouver {poss("s","m")} identifiant, {conj("avoir", "présent", "affirmatif", true)} besoin de fournir deux information spécifiques,
 	au choix
 </p>
 <ul>
@@ -62,7 +54,7 @@
 			<option>{masc} code de carte bancaire</option>
 			<option>{masc} numéro de sécurité sociale</option>
 			<option>{masc} mot de passe Paypal</option>
-			<option>Le code d'accès de ton immeuble</option>
+			<option>Le code d'accès de {poss("s", "m")} immeuble</option>
 			<option>{masc} empreinte génétique complète</option>
 			<option>Le code d'accès aux armes nucléaires</option>
 		</select>

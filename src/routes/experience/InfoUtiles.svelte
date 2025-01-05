@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { possessif } from "../../components/conjugaison.svelte";
+    import { poss } from "../../components/francais.svelte";
 	import OrdreAleatoire from "../../components/OrdreAleatoire.svelte";
 	import Popup from "../../components/Popup.svelte";
 
@@ -77,7 +77,7 @@
 <Popup bind:ouvert={popupAvertissement}>
 	<p>
 		Attention ! La validé de ces informations n'est pas garantie, ou du moins
-		dans {possessif({ nombre: "s", genre: "f" })} définition de la vérité. Nous déclinons
+		dans {poss("s", "f")} définition de la vérité. Nous déclinons
 		toute responsabilité en cas de problème quelquonque.
 	</p>
 
@@ -87,6 +87,7 @@
 			fermerPuisInfo,
 			fermerPuisInfoEtDésactiver,
 			afficherInfo,
+			afficherInfoEtDésactiver,
 			fermerPopup,
 			fermerPuisInfoEtDésactiver,
 		]}

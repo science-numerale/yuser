@@ -1,12 +1,11 @@
 <script>
 	import { base } from "$app/paths";
-	import { COI, formuler, possessif } from "../../../components/conjugaison.svelte";
-	import personnalisation from "../../../states/personnalisation.svelte";
+	import { conj, poss, réfléchi } from "../../../components/francais.svelte";
 </script>
 
 <p>
-	Donc {formuler("avoir")} oublié {possessif({ nombre: "s", genre: "m" })} identifiant...
-	C'est embêtant ! Voici quelques conseils pour {COI(true)} le rappeler :
+	Donc {conj("avoir")} oublié {poss("s", "m")} identifiant...
+	C'est embêtant ! Voici quelques conseils pour {réfléchi()} le rappeler :
 </p>
 <ul>
 	<li>Essayer de se le remémorer</li>
