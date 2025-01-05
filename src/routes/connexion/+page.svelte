@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { goto } from "$app/navigation";
 	import { base } from "$app/paths";
-	import {COD, conj, mot, poss} from "../../components/francais";
+	import {ajouterMajuscule, COD, conj, mot, poss} from "../../components/francais.svelte";
 	import compte from "../../states/compte.svelte";
 
 	let alphabet = "abcdefghijklmnopqrstuvwxyz";
@@ -77,10 +77,10 @@
 
 {#if mdpOublié}
 	<button onclick={() => goto(`${base}/connexion/poisson-rouge`)}>
-		{COD()} connecter malgré l'oubli d'identifiant (parcours déconseillé)
+		{ajouterMajuscule(COD())} connecter malgré l'oubli d'identifiant (parcours déconseillé)
 	</button>
 {:else}
 	<button onclick={seConnecter}
-		>{COD()} connecter maintenant</button
+		>{ajouterMajuscule(COD())} connecter maintenant</button
 	>
 {/if}

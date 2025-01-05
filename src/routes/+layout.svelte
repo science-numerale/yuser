@@ -3,7 +3,7 @@
 	import { page } from "$app/state";
 	import { base } from "$app/paths";
 	import Triche from "../components/Triche.svelte";
-	import {conj} from "../components/francais"
+	import { conj } from "../components/francais.svelte";
 
 	let { children } = $props();
 	let sélecteur = `${base}/selecteur`;
@@ -26,7 +26,11 @@
 				<a
 					aria-current={page.url.pathname === sélecteur ? "page" : undefined}
 					href={page.url.href}
-					onclick={()=>alert(conj("devoir", "présent", "affirmatif", true)+ " aller sur le sélecteur de page")}
+					onclick={() =>
+						alert(
+							conj("devoir", "présent", "affirmatif", true) +
+								" aller sur le sélecteur de page",
+						)}
 				>
 					Autres pages
 				</a>

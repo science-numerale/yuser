@@ -3,7 +3,7 @@
 	import triche from "../../states/triche.svelte";
 	import TutoPopup from "./TutoPopup.svelte";
 	import InfoUtiles from "./InfoUtiles.svelte";
-	import { formuler, conj } from "../../components/francais";
+	import { conj } from "../../components/francais.svelte";
 
 	let tuto1: boolean = $state(false);
 	let tuto2: boolean = $state(false);
@@ -47,7 +47,7 @@
 <TutoPopup
 	bind:ouvert={tuto3}
 	info="Ce bouton n'est pas cliquable"
-	memorisation="{conj("comprendre", "présent", "affirmatif", true)}} que les développeurs n'aient pas eu le temps de coder cette fonctionnalité"
+	memorisation="{conj("comprendre", "présent", "affirmatif", true)} que les développeurs n'aient pas eu le temps de coder cette fonctionnalité"
 >
 	<button disabled style="cursor: wait;">
 		Désactiver les informations utiles

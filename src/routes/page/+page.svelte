@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page } from "$app/state";
-    import { conj } from "../../components/francais";
+    import { conj } from "../../components/francais.svelte";
 
 	let param = page.url.searchParams.get("n"); // Malheureusement on doit utiliser les searchParams parceque les sites statiques ne permettent pas d'utiliser des paramètres dans les noms de pages...
 	let nom = param ? `la page n°${param}` : "la page mystère";

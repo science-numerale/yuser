@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { goto } from "$app/navigation";
 	import { base } from "$app/paths";
-	import {conj, poss} from "../../../../components/francais"
+	import {conj, poss} from "../../../../components/francais.svelte"
 	import Popup from "../../../../components/Popup.svelte";
 
 	let fem = poss("s", "f").charAt(0).toUpperCase() + poss("s", "f").slice(1);
@@ -54,7 +54,7 @@
 			<option>{masc} code de carte bancaire</option>
 			<option>{masc} numéro de sécurité sociale</option>
 			<option>{masc} mot de passe Paypal</option>
-			<option>Le code d'accès de ton immeuble</option>
+			<option>Le code d'accès de {poss("s", "m")} immeuble</option>
 			<option>{masc} empreinte génétique complète</option>
 			<option>Le code d'accès aux armes nucléaires</option>
 		</select>

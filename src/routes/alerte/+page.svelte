@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from "svelte";
 	import Popup from "../../components/Popup.svelte";
-	import {poss} from "../../components/francais"
+	import {poss} from "../../components/francais.svelte"
 
 	let nombre = $state(20);
 	let erreur = $state(true);

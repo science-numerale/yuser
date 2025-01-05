@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { goto } from "$app/navigation";
 	import { base } from "$app/paths";
-	import { conj } from "../components/francais";
+	import { conj } from "../components/francais.svelte";
 	import PopupEnnuyeux from "../components/PopupEnnuyeux.svelte";
 	let nePas = $state(true);
 	let popup: boolean = $state(false);
@@ -36,7 +36,7 @@
 
 <p>
 	{conj("pouvoir", "présent", "affirmatif", true)} y faire plein de chose ! Il est conseillé tout de même de se connecter pour 
-	débloquer des fonctionnalités supplémentaires. {conj("pouvoir", "présent", "affirmatif", true)} retrouver tout ça sur le"
+	débloquer des fonctionnalités supplémentaires. {conj("pouvoir", "présent", "affirmatif", true)} retrouver tout ça sur le
 	<a href={`${base}/selecteur`}>séleteur de page</a>.
 </p>
 
@@ -56,13 +56,13 @@
 </div>
 
 <PopupEnnuyeux bind:ouvert={popup}>
-	{conj("pouvoir", "présent", "interrogatif", true)} <span role="none" onclick={démarrer} style="cursor: pointer;">
+	{conj("vouloir", "présent", "interrogatif", true, false).toString()} <span role="none" onclick={démarrer} style="cursor: pointer;">
 		démarrer
 	</span>
 	l'expérience ?
 	<button onclick={() => alert(conj("avoir", "présent", "affirmatif", true)+" le choix")}>Pas sûr</button>
 	<button onclick={() => alert(conj("avoir", "présent", "affirmatif", true)+" le temps qu'il vous faut")}>
-		Laissez moi du temps...
+		Laissez  du temps...
 	</button>
 </PopupEnnuyeux>
 

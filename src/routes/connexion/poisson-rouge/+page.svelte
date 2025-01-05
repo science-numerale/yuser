@@ -1,11 +1,11 @@
 <script>
 	import { base } from "$app/paths";
-	import { conj, poss } from "../../../components/francais";
+	import { conj, poss, réfléchi } from "../../../components/francais.svelte";
 </script>
 
 <p>
 	Donc {conj("avoir")} oublié {poss("s", "m")} identifiant...
-	C'est embêtant ! Voici quelques conseils pour //chantier\\ le rappeler :
+	C'est embêtant ! Voici quelques conseils pour {réfléchi()} le rappeler :
 </p>
 <ul>
 	<li>Essayer de se le remémorer</li>
