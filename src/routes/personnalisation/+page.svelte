@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { formuler } from "../../components/francais"
+	import { conj } from "../../components/francais"
 	import { setPersonne, setGenre } from "../../components/francais";
 </script>
 
@@ -14,5 +14,5 @@
 <button onclick="{() => setGenre("f")}">féminin</button>
 <button onclick="{() => setGenre("i")}">indéfini</button>
 <br/>
-<p>{formuler("$v/avoir/présent/interrogatif/r .")}</p>
+<p>{conj("être", "présent", "affirmatif", true)}.</p>
 <!-- Il faut actualiser la page -->

@@ -1,10 +1,10 @@
 <script>
 	import { base } from "$app/paths";
-	import { formuler } from "../../../components/francais";
+	import { conj, poss } from "../../../components/francais";
 </script>
 
 <p>
-	Donc {formuler("$v/avoir/présent/affirmatif/m ")} oublié //chantier\\ identifiant...
+	Donc {conj("avoir")} oublié {poss("s", "m")} identifiant...
 	C'est embêtant ! Voici quelques conseils pour //chantier\\ le rappeler :
 </p>
 <ul>

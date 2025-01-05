@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { goto } from "$app/navigation";
 	import { base } from "$app/paths";
-	import {formuler} from "../../components/francais";
+	import {COD, conj, mot, poss} from "../../components/francais";
 	import compte from "../../states/compte.svelte";
 
 	let alphabet = "abcdefghijklmnopqrstuvwxyz";
@@ -24,7 +24,7 @@
 				identifiant[2] === alphabet[clé + 9] &&
 				identifiant[5] === alphabet[clé + 3]
 			) {
-				alert("Vous êtes connecté !");
+				alert(conj("être", "présent", "affirmatif", true)+" connecté !");
 				compte.connecté = true;
 			}
 		}
@@ -32,9 +32,9 @@
 </script>
 
 <p>
-	{formuler("$v/avoir/présent/interrogatif/m ")} besoin de //chantier\\ connecter au site
-	pour quelque raison ? Il ne faut plus hésiter ! {formuler("$v/pouvoir/présent/affirmatif/m ")}
-	//chantier\\ connecter dès maintenant sur cette page :
+	{conj("avoir", "présent", "interrogatif", true)} besoin de {COD()} connecter au site
+	pour quelque raison ? Il ne faut plus hésiter ! {conj("pouvoir", "présent", "affirmatif", true)}
+	{COD()} connecter dès maintenant sur cette page :
 </p>
 
 <ul>
@@ -69,18 +69,18 @@
 	<li>
 		<input bind:checked={mdpOublié} type="checkbox" />
 		<span
-			>{formuler("$v/avoir/présent/affirmatif/m ")} oublié //chantier\\
-			identifiant tel //chantier\\ poisson rouge</span
+			>{conj("avoir", "présent", "affirmatif", true)} oublié {poss("s", "m")}
+			identifiant tel {mot("un")} {mot("poisson")} {mot("rouge")}.</span
 		>
 	</li>
 </ul>
 
 {#if mdpOublié}
 	<button onclick={() => goto(`${base}/connexion/poisson-rouge`)}>
-		//chantier\\ connecter malgré l'oubli d'identifiant (parcours déconseillé)
+		{COD()} connecter malgré l'oubli d'identifiant (parcours déconseillé)
 	</button>
 {:else}
 	<button onclick={seConnecter}
-		>//chantier\\ connecter maintenant</button
+		>{COD()} connecter maintenant</button
 	>
 {/if}
