@@ -12,7 +12,15 @@
 <div class="app">
 	<Triche />
 	<header>
-		<h1>Yuser</h1>
+		<h1>
+			Yuser <a href="https://github.com/science-numerale/yuser" target="_blank"
+				><img
+					height="20"
+					alt="Logo de GitHub"
+					src="{base}/github-mark-white.svg"
+				/></a
+			>
+		</h1>
 		<ul>
 			<li>
 				<a
