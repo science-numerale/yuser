@@ -1,7 +1,7 @@
 <script lang="ts">
-    import { poss } from "../../components/francais.svelte";
-	import OrdreAleatoire from "../../components/OrdreAleatoire.svelte";
-	import Popup from "../../components/Popup.svelte";
+	import { poss } from "../../composants/francais.svelte";
+	import OrdreAleatoire from "../../composants/OrdreAleatoire.svelte";
+	import Popup from "../../composants/Popup.svelte";
 
 	let { infos = $bindable() }: { infos: string[] } = $props();
 
@@ -77,8 +77,8 @@
 <Popup bind:ouvert={popupAvertissement}>
 	<p>
 		Attention ! La validé de ces informations n'est pas garantie, ou du moins
-		dans {poss("s", "f")} définition de la vérité. Nous déclinons
-		toute responsabilité en cas de problème quelquonque.
+		dans {poss("s", "f")} définition de la vérité. Nous déclinons toute responsabilité
+		en cas de problème quelquonque.
 	</p>
 
 	<OrdreAleatoire

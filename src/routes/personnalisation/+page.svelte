@@ -1,7 +1,11 @@
 <script>
-	import { conj } from "../../components/francais.svelte";
+	import { conj } from "../../composants/francais.svelte";
 	import personnalisation from "../../states/personnalisation.svelte";
 </script>
+
+<svelte:head>
+	<title>Personnalisation</title>
+</svelte:head>
 
 <p>
 	Attention ! Ceci est une page de test !

@@ -1,6 +1,6 @@
 <script>
 	import { page } from "$app/state";
-	import PopupEnnuyeux from "../components/PopupEnnuyeux.svelte";
+	import PopupEnnuyeux from "../composants/PopupEnnuyeux.svelte";
 
 	let popup = $state(true);
 </script>

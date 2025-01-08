@@ -1,7 +1,11 @@
 <script>
 	import { base } from "$app/paths";
-	import { conj, poss, réfléchi } from "../../../components/francais.svelte";
+	import { conj, poss, réfléchi } from "../../../composants/francais.svelte";
 </script>
+
+<svelte:head>
+	<title>Oubli d'identifiant</title>
+</svelte:head>
 
 <p>
 	Donc {conj("avoir")} oublié {poss("s", "m")} identifiant...

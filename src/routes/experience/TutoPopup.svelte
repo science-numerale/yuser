@@ -1,8 +1,8 @@
 <script lang="ts">
 	import type { Snippet } from "svelte";
-	import Cache from "../../components/Cache.svelte";
-	import Popup from "../../components/Popup.svelte";
-	import PopupEnnuyeux from "../../components/PopupEnnuyeux.svelte";
+	import Cache from "../../composants/Cache.svelte";
+	import Popup from "../../composants/Popup.svelte";
+	import PopupEnnuyeux from "../../composants/PopupEnnuyeux.svelte";
 
 	let {
 		children,

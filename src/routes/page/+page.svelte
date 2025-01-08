@@ -1,10 +1,14 @@
 <script lang="ts">
 	import { page } from "$app/state";
-    import { conj } from "../../components/francais.svelte";
+	import { ajouterMajuscule, conj } from "../../composants/francais.svelte";
 
 	let param = page.url.searchParams.get("n"); // Malheureusement on doit utiliser les searchParams parceque les sites statiques ne permettent pas d'utiliser des paramètres dans les noms de pages...
 	let nom = param ? `la page n°${param}` : "la page mystère";
 </script>
+
+<svelte:head>
+	<title>{ajouterMajuscule(nom)}</title>
+</svelte:head>
 
 {#if param == "666"}
 	<h1>Repentez-vous, pêcheurs !!!</h1>
@@ -17,7 +21,12 @@
 {:else}
 	<h1>Bienvenue sur {nom}</h1>
 	<p>
-		Malheureusement, {nom} n'existe pas encore ! {conj("rechercher", "impératif", "affirmatif", true)}
+		Malheureusement, {nom} n'existe pas encore ! {conj(
+			"rechercher",
+			"impératif",
+			"affirmatif",
+			true,
+		)}
 		peut-être <a href={`https://duck.com?q=${nom}`}>cela</a>...
 	</p>
 {/if}

@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { goto } from "$app/navigation";
 	import { base } from "$app/paths";
-	import {conj, poss} from "../../../../components/francais.svelte"
-	import Popup from "../../../../components/Popup.svelte";
+	import {conj, poss} from "../../../../composants/francais.svelte"
+	import Popup from "../../../../composants/Popup.svelte";
 
 	let fem = poss("s", "f").charAt(0).toUpperCase() + poss("s", "f").slice(1);
 	let masc = poss("s", "m").charAt(0).toUpperCase() + poss("s", "m").slice(1);
@@ -28,6 +28,10 @@
 		alphabet[clé] +
 		alphabet[clé + 3];
 </script>
+
+<svelte:head>
+	<title>SOLUTION DE DERNIER RECOURS</title>
+</svelte:head>
 
 <p>
 	Pour retrouver {poss("s","m")} identifiant, {conj("avoir", "présent", "affirmatif", true)} besoin de fournir deux information spécifiques,

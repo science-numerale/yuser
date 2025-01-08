@@ -3,7 +3,7 @@
 	import triche from "../../states/triche.svelte";
 	import TutoPopup from "./TutoPopup.svelte";
 	import InfoUtiles from "./InfoUtiles.svelte";
-	import { conj } from "../../components/francais.svelte";
+	import { conj } from "../../composants/francais.svelte";
 
 	let tuto1: boolean = $state(false);
 	let tuto2: boolean = $state(false);
@@ -25,6 +25,10 @@
 		});
 	}
 </script>
+
+<svelte:head>
+	<title>Expérience</title>
+</svelte:head>
 
 <TutoPopup
 	bind:ouvert={tuto1}

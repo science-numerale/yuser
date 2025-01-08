@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from "svelte";
-	import Popup from "../../components/Popup.svelte";
-	import {poss} from "../../components/francais.svelte"
+	import Popup from "../../composants/Popup.svelte";
+	import {poss} from "../../composants/francais.svelte"
 
 	let nombre = $state(20);
 	let erreur = $state(true);
@@ -26,6 +26,10 @@
 		}
 	});
 </script>
+
+<svelte:head>
+	<title>qj$°£*#!:*µ%󰾢 </title>
+</svelte:head>
 
 {#each Array(nombre).fill(null) as _}
 	<h1

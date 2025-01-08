@@ -16,7 +16,8 @@
 		Maison: "/",
 		Connexion: "/connexion",
 		"À propos": "/apropos",
-		"Sélecteur de page": "/selecteur"
+		"Sélecteur de page": "/selecteur",
+		"Code source": "https://github.com/science-numerale/yuser"
 	};
 
 	let positions = {};
@@ -25,6 +26,10 @@
 	}
 
 </script>
+
+<svelte:head>
+	<title>Sélecteur de page</title>
+</svelte:head>
 
 <input onkeydown={(e)=>{e.preventDefault(); alert("La recherche n'est pas encore disponible")}} value={"Rechercher ici..."}>
 

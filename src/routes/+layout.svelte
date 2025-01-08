@@ -2,8 +2,8 @@
 	import "../app.css";
 	import { page } from "$app/state";
 	import { base } from "$app/paths";
-	import Triche from "../components/Triche.svelte";
-	import { conj } from "../components/francais.svelte";
+	import Triche from "../composants/Triche.svelte";
+	import { conj } from "../composants/francais.svelte";
 
 	let { children } = $props();
 	let sélecteur = `${base}/selecteur`;
@@ -13,7 +13,7 @@
 	<Triche />
 	<header>
 		<h1>
-			Yuser <a href="https://github.com/science-numerale/yuser" target="_blank"
+			Yuser <a style="margin-left: 1rem;" href="https://github.com/science-numerale/yuser" target="_blank"
 				><img
 					height="20"
 					alt="Logo de GitHub"

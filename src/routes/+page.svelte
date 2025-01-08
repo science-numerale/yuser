@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { goto } from "$app/navigation";
 	import { base } from "$app/paths";
-	import { conj } from "../components/francais.svelte";
-	import PopupEnnuyeux from "../components/PopupEnnuyeux.svelte";
+	import { conj } from "../composants/francais.svelte";
+	import PopupEnnuyeux from "../composants/PopupEnnuyeux.svelte";
 	let nePas = $state(true);
 	let popup: boolean = $state(false);
 

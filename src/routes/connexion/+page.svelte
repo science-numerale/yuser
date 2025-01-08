@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { goto } from "$app/navigation";
 	import { base } from "$app/paths";
-	import {ajouterMajuscule, COD, conj, mot, poss} from "../../components/francais.svelte";
+	import {ajouterMajuscule, COD, conj, mot, poss} from "../../composants/francais.svelte";
 	import compte from "../../states/compte.svelte";
 
 	let alphabet = "abcdefghijklmnopqrstuvwxyz";
@@ -30,6 +30,10 @@
 		}
 	}
 </script>
+
+<svelte:head>
+	<title>Saisir l'identifiant</title>
+</svelte:head>
 
 <p>
 	{conj("avoir", "présent", "interrogatif", true)} besoin de {COD()} connecter au site
