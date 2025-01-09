@@ -3,6 +3,7 @@
 	import Cache from "../../composants/Cache.svelte";
 	import Popup from "../../composants/Popup.svelte";
 	import PopupEnnuyeux from "../../composants/PopupEnnuyeux.svelte";
+	import Bouton from "../../composants/basiques/Bouton.svelte";
 
 	let {
 		children,
@@ -46,14 +47,13 @@
 		bind:value={entree}
 		onpaste={(e) => e.preventDefault()}
 	/>
-	<button onclick={jeVeuxFermer}>Fermer cette information utile</button>
+	<Bouton clic={jeVeuxFermer}>Fermer cette information utile</Bouton>
 
 	<Cache>
-		<button
-			class="hidden"
-			onclick={() => {
+		<Bouton
+			clic={() => {
 				entree = memorisation;
-			}}>Remplir</button
+			}}>Remplir</Bouton
 		>
 	</Cache>
 </Popup>

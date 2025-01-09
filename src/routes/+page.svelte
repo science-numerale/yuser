@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { goto } from "$app/navigation";
 	import { base } from "$app/paths";
+    import Bouton from "../composants/basiques/Bouton.svelte";
 	import { conj } from "../composants/francais.svelte";
 	import PopupEnnuyeux from "../composants/PopupEnnuyeux.svelte";
 	let nePas = $state(true);
@@ -21,12 +22,12 @@
 	<title>Page principale</title>
 </svelte:head>
 
-<button class="fake-but">
+<Bouton>
 	{#if nePas}
 		<span class="hidden">Ne pas</span>
 	{/if}
 	<span role="none" onclick={confirmer}>démarrer</span> l'expérience !!!
-</button>
+</Bouton>
 
 <p>
 	Ce site est une suite du site <a href="https://userinyerface.com/">
@@ -41,8 +42,8 @@
 </p>
 
 <div class="small">
-	<button
-		onclick={() => {
+	<Bouton
+		clic={() => {
 			nePas = !nePas;
 		}}
 		style="
@@ -50,7 +51,7 @@
 		color: grey;
 		border: 'none'
 	"
-		>{#if nePas}✔{:else}<span style="color: white">✘</span>{/if}</button
+		>{#if nePas}✔{:else}<span style="color: white">✘</span>{/if}</Bouton
 	>
 	Afficher "ne pas"
 </div>
@@ -60,16 +61,13 @@
 		démarrer
 	</span>
 	l'expérience ?
-	<button onclick={() => alert(conj("avoir", "présent", "affirmatif", true)+" le choix")}>Pas sûr</button>
-	<button onclick={() => alert(conj("avoir", "présent", "affirmatif", true)+" le temps qu'il vous faut")}>
+	<Bouton clic={() => alert(conj("avoir", "présent", "affirmatif", true)+" le choix")}>Pas sûr</Bouton>
+	<Bouton clic={() => alert(conj("avoir", "présent", "affirmatif", true)+" le temps qu'il vous faut")}>
 		Laissez  du temps...
-	</button>
+	</Bouton>
 </PopupEnnuyeux>
 
 <style>
-	.fake-but {
-		cursor: pointer;
-	}
 	.hidden {
 		color: gray;
 	}

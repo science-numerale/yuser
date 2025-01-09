@@ -7,9 +7,7 @@
 	<title>Personnalisation</title>
 </svelte:head>
 
-<p>
-	Attention ! Ceci est une page de test !
-</p>
+<p>Attention ! Ceci est une page de test !</p>
 <p>
 	Pouvoir : {conj("pouvoir")}
 </p>

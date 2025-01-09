@@ -1,7 +1,14 @@
 <script lang="ts">
 	import { goto } from "$app/navigation";
 	import { base } from "$app/paths";
-	import {ajouterMajuscule, COD, conj, mot, poss} from "../../composants/francais.svelte";
+	import Bouton from "../../composants/basiques/Bouton.svelte";
+	import {
+		ajouterMajuscule,
+		COD,
+		conj,
+		mot,
+		poss,
+	} from "../../composants/francais.svelte";
 	import compte from "../../states/compte.svelte";
 
 	let alphabet = "abcdefghijklmnopqrstuvwxyz";
@@ -24,7 +31,7 @@
 				identifiant[2] === alphabet[clé + 9] &&
 				identifiant[5] === alphabet[clé + 3]
 			) {
-				alert(conj("être", "présent", "affirmatif", true)+" connecté !");
+				alert(conj("être", "présent", "affirmatif", true) + " connecté !");
 				compte.connecté = true;
 			}
 		}
@@ -36,8 +43,13 @@
 </svelte:head>
 
 <p>
-	{conj("avoir", "présent", "interrogatif", true)} besoin de {COD()} connecter au site
-	pour quelque raison ? Il ne faut plus hésiter ! {conj("pouvoir", "présent", "affirmatif", true)}
+	{conj("avoir", "présent", "interrogatif", true)} besoin de {COD()} connecter au
+	site pour quelque raison ? Il ne faut plus hésiter ! {conj(
+		"pouvoir",
+		"présent",
+		"affirmatif",
+		true,
+	)}
 	{COD()} connecter dès maintenant sur cette page :
 </p>
 
@@ -74,17 +86,19 @@
 		<input bind:checked={mdpOublié} type="checkbox" />
 		<span
 			>{conj("avoir", "présent", "affirmatif", true)} oublié {poss("s", "m")}
-			identifiant tel {mot("un")} {mot("poisson")} {mot("rouge")}.</span
+			identifiant tel {mot("un")}
+			{mot("poisson")}
+			{mot("rouge")}.</span
 		>
 	</li>
 </ul>
 
 {#if mdpOublié}
-	<button onclick={() => goto(`${base}/connexion/poisson-rouge`)}>
+	<Bouton clic={() => goto(`${base}/connexion/poisson-rouge`)}>
 		{ajouterMajuscule(COD())} connecter malgré l'oubli d'identifiant (parcours déconseillé)
-	</button>
+	</Bouton>
 {:else}
-	<button onclick={seConnecter}
-		>{ajouterMajuscule(COD())} connecter maintenant</button
-	>
+	<Bouton clic={seConnecter}>
+		{ajouterMajuscule(COD())} connecter maintenant
+	</Bouton>
 {/if}

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Bouton from "../../composants/basiques/Bouton.svelte";
 	import { poss } from "../../composants/francais.svelte";
 	import OrdreAleatoire from "../../composants/OrdreAleatoire.svelte";
 	import Popup from "../../composants/Popup.svelte";
@@ -62,8 +63,8 @@
 	}
 </script>
 
-<button
-	onclick={() => {
+<Bouton
+	clic={() => {
 		if (premièreFois) {
 			popupAvertissement = true;
 		} else {
@@ -72,7 +73,7 @@
 	}}
 >
 	Obtenir une information inutile
-</button>
+</Bouton>
 
 <Popup bind:ouvert={popupAvertissement}>
 	<p>
@@ -95,30 +96,30 @@
 </Popup>
 
 {#snippet infoPuisFermer()}
-	<button
-		onclick={() => {
+	<Bouton
+		clic={() => {
 			ajouterInfo();
 			popupAvertissement = false;
 		}}
 	>
 		Afficher l'information quand même puis fermer ce popup.
-	</button>
+	</Bouton>
 	<br />
 {/snippet}
 {#snippet fermerPuisInfo()}
-	<button
-		onclick={() => {
+	<Bouton
+		clic={() => {
 			popupAvertissement = false;
 			ajouterInfo();
 		}}
 	>
 		Fermer ce popup puis afficher l'information quand même.
-	</button>
+	</Bouton>
 	<br />
 {/snippet}
 {#snippet fermerPuisInfoEtDésactiver()}
-	<button
-		onclick={() => {
+	<Bouton
+		clic={() => {
 			popupAvertissement = false;
 			ajouterInfo();
 			premièreFois = false;
@@ -126,43 +127,37 @@
 	>
 		Fermer ce popup puis afficher l'information quand même puis désactiver cet
 		avertissement.
-	</button>
+	</Bouton>
 	<br />
 {/snippet}
 {#snippet afficherInfo()}
-	<button
-		onclick={() => {
+	<Bouton
+		clic={() => {
 			ajouterInfo();
 		}}
 	>
 		Afficher l'information quand même.
-	</button>
+	</Bouton>
 	<br />
 {/snippet}
 {#snippet afficherInfoEtDésactiver()}
-	<button
-		onclick={() => {
+	<Bouton
+		clic={() => {
 			ajouterInfo();
 			premièreFois = false;
 		}}
 	>
 		Afficher l'information quand même puis désactiver cet avertissement.
-	</button>
+	</Bouton>
 	<br />
 {/snippet}
 {#snippet fermerPopup()}
-	<button
-		onclick={() => {
+	<Bouton
+		clic={() => {
 			popupAvertissement = false;
 		}}
 	>
 		Fermer ce popup
-	</button>
+	</Bouton>
 	<br />
 {/snippet}
-
-<style>
-	button {
-		text-align: left;
-	}
-</style>

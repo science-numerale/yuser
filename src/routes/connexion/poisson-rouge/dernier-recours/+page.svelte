@@ -1,7 +1,8 @@
 <script lang="ts">
 	import { goto } from "$app/navigation";
 	import { base } from "$app/paths";
-	import {conj, poss} from "../../../../composants/francais.svelte"
+	import Bouton from "../../../../composants/basiques/Bouton.svelte";
+	import { conj, poss } from "../../../../composants/francais.svelte";
 	import Popup from "../../../../composants/Popup.svelte";
 
 	let fem = poss("s", "f").charAt(0).toUpperCase() + poss("s", "f").slice(1);
@@ -34,8 +35,12 @@
 </svelte:head>
 
 <p>
-	Pour retrouver {poss("s","m")} identifiant, {conj("avoir", "présent", "affirmatif", true)} besoin de fournir deux information spécifiques,
-	au choix
+	Pour retrouver {poss("s", "m")} identifiant, {conj(
+		"avoir",
+		"présent",
+		"affirmatif",
+		true,
+	)} besoin de fournir deux information spécifiques, au choix
 </p>
 <ul>
 	<li>
@@ -68,18 +73,18 @@
 	</li>
 </ul>
 
-<button
-	onclick={() => {
+<Bouton
+	clic={() => {
 		popup = true;
 	}}
-	disabled={!(
+	désactivé={!(
 		réponse1.length > 2 &&
 		réponse1[0] === réponse1[0].toUpperCase() &&
 		réponse2.length > 10
 	)}
 >
 	Générer {masc.toLowerCase()} indentifiant temporaire
-</button>
+</Bouton>
 
 <Popup bind:ouvert={popup}>
 	<ul>
@@ -96,19 +101,18 @@
 
 {#snippet aFaire(pos: number, texte: string, apres?: () => void)}
 	<li>
-		<button
-			onclick={() => {
+		<Bouton
+			clic={() => {
 				étape = pos + 1;
 				apres?.();
 			}}
-			disabled={étape !== pos}
-			style="{étape < pos ? 'cursor: not-allowed' : ''};"
+			désactivé={étape !== pos}
 		>
 			{#if étape > pos}
 				<s>{pos} - {texte}</s>
 			{:else}
 				{pos} - {texte}
 			{/if}
-		</button>
+		</Bouton>
 	</li>
 {/snippet}
