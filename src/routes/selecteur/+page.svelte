@@ -17,7 +17,7 @@
 		Connexion: "/connexion",
 		"À propos": "/apropos",
 		"Sélecteur de page": "/selecteur",
-		"Code source": "https://github.com/science-numerale/yuser"
+		"Repos (page zen)": "/repos", // Pas de code source car sinon le site ajoute "base"
 	};
 
 	let positions = {};
