@@ -1,7 +1,7 @@
 <script lang="ts">
-    import Bouton from "../../composants/basiques/Bouton.svelte";
-
+function keydown(e) {
+	alert(e.key)
+}
 </script>
-<Bouton></Bouton>
-<Bouton clic={()=>alert("Actif !")}>Activé</Bouton>
-<Bouton désactivé={true} clic={()=>alert("ça marche pas.")}>Désactivé</Bouton>
+
+<svelte:window onkeydown={keydown}/>
