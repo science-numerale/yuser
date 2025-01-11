@@ -8,6 +8,43 @@ function ajouter(c) {
 
 {#if (text=="Merlin l'enchanteur")}
 <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fvignette.wikia.nocookie.net%2Fonceuponatime%2Fimages%2Fa%2Fac%2FMerlin_l%27Enchanteur_(Disney)_Higitus_Figitus_danse_livres.gif%2Frevision%2Flatest%2Fscale-to-width-down%2F640%3Fcb%3D20150512114452%26path-prefix%3Dfr&f=1&nofb=1&ipt=2139c1e6fa8f0a80cb15bc5d23250b8b5ac2392b5c5db597cc75b82769c462fe&ipo=images" alt="Merlin l'enchanteur dans Disney, scène de la danse des livres"/>
+
+
+{:else if (text=="Ce site est super" || text=="Ce site est génial")}
+<img src="https://static-cse.canva.com/blob/1146728/Designsanstitre.png" alt="I love you!"/>
+
+
+{:else if (text=="C'est nul" || text=="Ce site est nul")}
+<img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.themoviedb.org%2Ft%2Fp%2Foriginal%2FviGCwLxupyoaLsa6hrnu1gYrB0B.jpg&f=1&nofb=1&ipt=196f890f464a0b55c931868c80bb88ea2d667700bd32758855754891793168b6&ipo=images" alt="I hate you"/>
+
+
+{:else if (text=="666")}
+<p><a href="/page?n=666">page</a></p>
+
+
+{:else if (text=="Windows" || text=="Linux" || text=="Macos")}
+<div class="container">
+  <div><strong>Linux</strong></div>
+  <div><strong>Windows</strong></div>
+  <div>Open Source</div>  
+  <div>Closed Source</div>
+  <div>Gratuit</div>
+  <div>Entre 150€ et 320€</div>  
+  <div>Logiciels gratuits</div>
+  <div>Logiciels payants</div>
+	<div>Distributions Live CD/USB</div>
+	<div>NON</div>
+	<div>Sécurisé</div>
+	<div>Non sécurisé</div>
+	<div>RIEN</div>
+	<div>Virus, chevaux de Troie, ...</div>
+	<div>Besoins matériels faibles</div>
+	<div>Besoins matériels très élevés</div>
+	<div>100% customisable</div>
+	<div>Non customisable</div>
+</div>
+
+
 {:else}
 <div class="main">
 <h1>Entrez un texte : <span class="mdp">{text}</span></h1>
@@ -91,5 +128,18 @@ img {
 	left: 0;
 	min-width: 100%;
 	min-height: 100%;
+}
+.container {
+  display: grid;
+  grid-template-columns: auto auto;
+  background-color: white;
+  padding: 10px;
+}
+.container > div {
+  background-color: white;
+  border: 1px solid black;
+  padding: 10px;
+  font-size: 30px;
+  text-align: center;
 }
 </style>

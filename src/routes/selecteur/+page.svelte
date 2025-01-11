@@ -17,7 +17,8 @@
 		Connexion: "/connexion",
 		"À propos": "/apropos",
 		"Sélecteur de page": "/selecteur",
-		"Code source": "https://github.com/science-numerale/yuser"
+		"Code source": "https://github.com/science-numerale/yuser",
+		Repos: "/repos",
 	};
 
 	let positions = {};
