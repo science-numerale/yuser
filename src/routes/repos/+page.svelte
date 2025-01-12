@@ -12,4 +12,4 @@
 	let SubPage = elems[Math.floor(Math.random() * elems.length)];
 </script>
 
-<Jeu />
+<SubPage />
