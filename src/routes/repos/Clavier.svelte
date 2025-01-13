@@ -114,6 +114,7 @@
 		font-size: 50px;
 		margin: 2px;
 		background-color: #202323;
+		color: white;
 	}
 	button:hover {
 		background-color: #3a3e3f;

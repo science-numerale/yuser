@@ -6,7 +6,7 @@
 		<span>85%</span> de ces <span>patates</span><br />finiront en
 		<span>frites</span>
 	</h1>
-	<p>Rejoignez la lutte pour le droit des patate !</p>
+	<p>Rejoignez la lutte pour le droit des patates !</p>
 </div>
 
 <style>
