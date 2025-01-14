@@ -1,7 +1,5 @@
 <script lang="ts">
-	function keydown(e) {
-		alert(e.key);
-	}
+    import TestHumanite from "../../composants/TestHumanite.svelte";
 </script>
 
-<svelte:window onkeydown={keydown} />
+<TestHumanite validé={false} />
