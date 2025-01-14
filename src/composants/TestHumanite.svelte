@@ -6,6 +6,7 @@
 	import PopupEnnuyeux from "./PopupEnnuyeux.svelte";
 	import Etape1 from "./testHumanite/Etape1.svelte";
 	import Etape2 from "./testHumanite/Etape2.svelte";
+	import { attendre } from "../states/attente.svelte";
 
 	let {
 		validé = $bindable(),
@@ -28,12 +29,21 @@
 
 <Bouton
 	clic={() => {
-		étape = 1;
-	}}>Passer le test d'humanité</Bouton
-><br />
+		attendre(2000).then(() => {
+			étape = 1;
+		});
+	}}
+>
+	Passer le test d'humanité
+</Bouton><br />
 
 <!-- TODO : penser à modifier le "3" lors d'ajout d'étapes -->
-<Bouton désactivé={étape < 3} clic={()=>{validé = true}}>Valider de test d'humanité</Bouton>
+<Bouton
+	désactivé={étape < 3}
+	clic={() => {
+		validé = true;
+	}}>Valider de test d'humanité</Bouton
+>
 
 <PopupEnnuyeux bind:ouvert={popupRaté}>
 	Vous avez raté le test d'humanité
@@ -45,7 +55,9 @@
 		<Bouton
 			clic={() => {
 				if (réeussie) {
-					étape = pos + 1;
+					attendre(2000).then(() => {
+						étape = pos + 1;
+					});
 				} else {
 					rater();
 				}

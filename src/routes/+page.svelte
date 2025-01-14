@@ -37,7 +37,7 @@
 	{#if nePas}
 		<span class="hidden">Ne pas</span>
 	{/if}
-	<span role="none" onclick={étape1}>démarrer</span> l'expérience !!!
+	<Bouton style={"texte"} clic={étape1}>démarrer</Bouton> l'expérience !!!
 </Bouton>
 
 <p>
@@ -58,19 +58,16 @@
 		clic={() => {
 			nePas = !nePas;
 		}}
-		style="
-		{nePas ? 'background: white;' : ''}
-		color: grey;
-		border: 'none'
-	"
-		>{#if nePas}✔{:else}<span style="color: white">✘</span>{/if}</Bouton
+		style={nePas ? "secondaire" : "primaire"}
 	>
+		{#if nePas}✔{:else}<span style="color: white">✘</span>{/if}
+	</Bouton>
 	Afficher "ne pas"
 </div>
 
 <PopupEnnuyeux bind:ouvert={popup}>
 	{conj("vouloir", "présent", "interrogatif", true, false).toString()}
-	<span role="none" onclick={étape2} style="cursor: pointer;"> démarrer </span>
+	<Bouton clic={étape2} style="texte">démarrer</Bouton>
 	l'expérience ?
 	<Bouton
 		clic={() =>

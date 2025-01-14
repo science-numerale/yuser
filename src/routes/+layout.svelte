@@ -4,6 +4,8 @@
 	import { base } from "$app/paths";
 	import Triche from "../composants/Triche.svelte";
 	import { conj } from "../composants/francais.svelte";
+    import { attentes } from "../states/attente.svelte";
+    import Attente from "../composants/Attente.svelte";
 
 	let { children } = $props();
 	let sélecteur = `${base}/selecteur`;
@@ -57,6 +59,10 @@
 				très rare{/if}
 		</p>
 	</footer>
+
+	{#if attentes.n > 0}
+		<Attente />
+	{/if}
 </div>
 
 <style>

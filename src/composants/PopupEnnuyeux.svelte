@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { Snippet } from "svelte";
 	import Popup from "./Popup.svelte";
+    import Bouton from "./basiques/Bouton.svelte";
 
 	let {
 		children,
@@ -45,12 +46,12 @@
 	Êtes-vous sûr de vouloir fermer ce popup ainsi que celui sur lequel vous avez
 	cliqué il y a {beauTimer} secondes
 	{@render fauxBouton(random)}
-	<button onclick={()=>{ouvert = false}}>Autant que {beauTimer} = {beauTimer}</button>
+	<Bouton clic={()=>{ouvert = false}}>Autant que {beauTimer} = {beauTimer}</Bouton>
 	{@render fauxBouton(!random)}
 </Popup>
 
 {#snippet fauxBouton(affiché: boolean)}
 	{#if affiché}
-		<button onclick={()=>{dialogueConfirmation = false}}>Autant que {fauxTimer} = {beauTimer}</button>
+		<Bouton clic={()=>{dialogueConfirmation = false}}>Autant que {fauxTimer} = {beauTimer}</Bouton>
 	{/if}
 {/snippet}
