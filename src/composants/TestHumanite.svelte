@@ -7,6 +7,7 @@
 	import Etape1 from "./testHumanite/Etape1.svelte";
 	import Etape2 from "./testHumanite/Etape2.svelte";
 	import { attendre } from "../states/attente.svelte";
+	import triche from "../states/triche.svelte";
 
 	let {
 		validé = $bindable(),
@@ -28,8 +29,9 @@
 </script>
 
 <Bouton
+	attente={false}
 	clic={() => {
-		attendre(2000).then(() => {
+		attendre(5000).then(() => {
 			étape = 1;
 		});
 	}}
@@ -39,23 +41,27 @@
 
 <!-- TODO : penser à modifier le "3" lors d'ajout d'étapes -->
 <Bouton
-	désactivé={étape < 3}
+	désactivé={étape < 3 && !triche().pasDeCaptchas}
+	saut={false}
 	clic={() => {
 		validé = true;
-	}}>Valider de test d'humanité</Bouton
+	}}
 >
+	Valider de test d'humanité
+</Bouton>
 
 <PopupEnnuyeux bind:ouvert={popupRaté}>
 	Vous avez raté le test d'humanité
 </PopupEnnuyeux>
 
-{#snippet étapePopup(pos: number, contenu: Snippet, réeussie: boolean)}
+{#snippet étapePopup(pos: number, contenu: Snippet, réussie: boolean)}
 	<Popup ouvert={étape === pos}>
 		{@render contenu()}
 		<Bouton
+			attente={false}
 			clic={() => {
-				if (réeussie) {
-					attendre(2000).then(() => {
+				if (réussie) {
+					attendre(5000).then(() => {
 						étape = pos + 1;
 					});
 				} else {

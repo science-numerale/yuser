@@ -41,7 +41,7 @@
 		min-height: 100dvh;
 		z-index: 999;
 
-		background: rgba(0, 0, 0, 0.1);
+		background: rgba(0, 0, 0, 0.25);
 		overflow: auto;
 
 		display: grid;
@@ -53,10 +53,6 @@
 	.contenu {
 		position: relative;
 		overflow-x: clip;
-
-		/*top: 50%;*/
-		/*left: 50%;*/
-		/*transform: translate(-50%, -50%);*/
 
 		width: max-content;
 		max-width: 90dvw;

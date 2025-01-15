@@ -8,7 +8,7 @@
 	} = $props();
 </script>
 
-{#if triche.activée}
+{#if triche().boutonsCachés}
 	<div class="hidden">
 		{@render children()}
 	</div>

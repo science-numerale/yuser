@@ -7,23 +7,33 @@
 		children,
 		clic,
 		désactivé,
+		saut = true,
 		attente = true,
 		style = "primaire",
 	}: {
 		children?: Snippet;
 		clic?: () => void;
 		désactivé?: boolean;
+		saut?: boolean;
 		attente?: boolean;
 		style?: "primaire" | "secondaire" | "texte";
 	} = $props();
 
-	let faire = $derived(attente ? () => attendre(500).then(clic) : clic);
+	let faire = $derived(
+		désactivé ? () => {} : attente ? () => attendre(500).then(clic) : clic,
+	);
 </script>
 
 {#if style === "texte"}
-	<span role="button" tabindex="0" onkeydown={()=>{}} onclick={faire}>{@render children?.()}</span>
+	<span role="button" tabindex="0" onkeydown={() => {}} onclick={faire}
+		>{@render children?.()}</span
+	>
 {:else}
-	<button disabled={désactivé} class={style} onclick={faire}>{@render children?.()}</button>
+	<div style="display: inline-block;" class={[{ désactivé, saut }]}>
+		<button disabled={désactivé} class={style} onclick={faire}
+			>{@render children?.()}</button
+		>
+	</div>
 {/if}
 
 <style>
@@ -42,6 +52,17 @@
 
 	button:disabled {
 		opacity: 50%;
+	}
+
+	.désactivé {
 		cursor: wait;
+	}
+	.désactivé.saut:hover {
+		--trans: -125%;
+	}
+	.désactivé > * {
+		transform: translateY(var(--trans));
+		pointer-events: none;
+		/*left: var(--trans);*/
 	}
 </style>

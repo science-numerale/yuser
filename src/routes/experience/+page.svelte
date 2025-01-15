@@ -12,7 +12,7 @@
 
 	let infos = $state([]);
 
-	if (!(triche.activée && triche.pasDeTutoriels)) {
+	if (!(triche().pasDeTutoriels)) {
 		onMount(() => {
 			tuto1 = true;
 		});
