@@ -53,8 +53,10 @@
 		<Bouton
 			clic={() => {
 				entree = memorisation;
-			}}>Remplir</Bouton
+			}}
 		>
+			Remplir
+		</Bouton>
 	</Cache>
 </Popup>
 

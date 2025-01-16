@@ -23,34 +23,55 @@
 </script>
 
 {#if ouvert}
-	<div class="cacheur"></div>
-	<div class="contenu">
-		{@render children()}
+	<div class="espace">
+		<div class="contenu">
+			{@render children()}
+		</div>
 	</div>
 {/if}
 
 <style>
-	.contenu {
-		position: fixed;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		z-index: 999;
-
-		background: white;
-		border: solid black;
-		padding: 1rem;
-	}
-	.cacheur {
-		content: "";
+	.espace {
 		position: fixed;
 		top: 0;
 		bottom: 0;
 		left: 0;
 		right: 0;
+
+		min-height: 100dvh;
 		z-index: 999;
 
-		background: black;
-		opacity: 10%;
+		background: rgba(0, 0, 0, 0.25);
+		overflow: auto;
+
+		display: grid;
+		place-items: center;
+		/*display: flex;*/
+		/*justify-content: center;*/
+		/*align-items: center;*/
 	}
+	.contenu {
+		position: relative;
+		overflow-x: clip;
+
+		width: max-content;
+		max-width: 90dvw;
+
+
+		background: white;
+		border: solid black;
+		padding: 1rem;
+	}
+	/*.cacheur {*/
+	/*	content: "";*/
+	/*	position: fixed;*/
+	/*	top: 0;*/
+	/*	bottom: 0;*/
+	/*	left: 0;*/
+	/*	right: 0;*/
+	/*	z-index: 999;*/
+	/**/
+	/*	background: black;*/
+	/*	opacity: 10%;*/
+	/*}*/
 </style>

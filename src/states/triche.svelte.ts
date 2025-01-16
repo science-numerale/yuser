@@ -1,7 +1,20 @@
 import localStorageState from "./storage.svelte";
 
-let def = { activée: false, pasDeTutoriels: false };
+let def = {
+	pasDeTutoriels: false,
+	pasDeCaptchas: false,
+	pasDeDelais: false,
+	boutonsCachés: false,
+	sélecteurOrdonné: false
+};
 
-let triche = localStorageState("cheats", def)
+export let _tricheStockée = localStorageState("cheats", Object.assign({}, { activée: false }, def))
 
-export default triche
+
+export default function triche() {
+	let { activée, ...params } = _tricheStockée
+	if (activée) {
+		return params
+	}
+	return def
+}

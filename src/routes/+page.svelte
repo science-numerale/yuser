@@ -1,21 +1,32 @@
 <script lang="ts">
 	import { goto } from "$app/navigation";
 	import { base } from "$app/paths";
-    import Bouton from "../composants/basiques/Bouton.svelte";
+	import Bouton from "../composants/basiques/Bouton.svelte";
 	import { conj } from "../composants/francais.svelte";
+	import Popup from "../composants/Popup.svelte";
 	import PopupEnnuyeux from "../composants/PopupEnnuyeux.svelte";
+	import TestHumanite from "../composants/TestHumanite.svelte";
 	let nePas = $state(true);
 	let popup: boolean = $state(false);
 
-	function confirmer() {
+	function étape1() {
 		if (!nePas) {
 			popup = true;
 		}
 	}
-	function démarrer() {
+	function étape2() {
 		popup = false;
-		goto(base + "/experience");
+		testHumain = true;
 	}
+
+	let testHumain = $state(false);
+	let humain = $state(false);
+	$effect(() => {
+		if (humain) {
+			testHumain = false;
+			goto(base + "/experience");
+		}
+	});
 </script>
 
 <svelte:head>
@@ -26,7 +37,7 @@
 	{#if nePas}
 		<span class="hidden">Ne pas</span>
 	{/if}
-	<span role="none" onclick={confirmer}>démarrer</span> l'expérience !!!
+	<Bouton style={"texte"} clic={étape1}>démarrer</Bouton> l'expérience !!!
 </Bouton>
 
 <p>
@@ -36,8 +47,9 @@
 </p>
 
 <p>
-	{conj("pouvoir", "présent", "affirmatif", true)} y faire plein de chose ! Il est conseillé tout de même de se connecter pour 
-	débloquer des fonctionnalités supplémentaires. {conj("pouvoir", "présent", "affirmatif", true)} retrouver tout ça sur le
+	{conj("pouvoir", "présent", "affirmatif", true)} y faire plein de chose ! Il est
+	conseillé tout de même de se connecter pour débloquer des fonctionnalités supplémentaires.
+	{conj("pouvoir", "présent", "affirmatif", true)} retrouver tout ça sur le
 	<a href={`${base}/selecteur`}>séleteur de page</a>.
 </p>
 
@@ -46,26 +58,36 @@
 		clic={() => {
 			nePas = !nePas;
 		}}
-		style="
-		{nePas ? 'background: white;' : ''}
-		color: grey;
-		border: 'none'
-	"
-		>{#if nePas}✔{:else}<span style="color: white">✘</span>{/if}</Bouton
+		style={nePas ? "secondaire" : "primaire"}
 	>
+		{#if nePas}✔{:else}<span style="color: white">✘</span>{/if}
+	</Bouton>
 	Afficher "ne pas"
 </div>
 
 <PopupEnnuyeux bind:ouvert={popup}>
-	{conj("vouloir", "présent", "interrogatif", true, false).toString()} <span role="none" onclick={démarrer} style="cursor: pointer;">
-		démarrer
-	</span>
+	{conj("vouloir", "présent", "interrogatif", true, false).toString()}
+	<Bouton clic={étape2} style="texte">démarrer</Bouton>
 	l'expérience ?
-	<Bouton clic={() => alert(conj("avoir", "présent", "affirmatif", true)+" le choix")}>Pas sûr</Bouton>
-	<Bouton clic={() => alert(conj("avoir", "présent", "affirmatif", true)+" le temps qu'il vous faut")}>
-		Laissez  du temps...
+	<Bouton
+		clic={() =>
+			alert(conj("avoir", "présent", "affirmatif", true) + " le choix")}
+		>Pas sûr</Bouton
+	>
+	<Bouton
+		clic={() =>
+			alert(
+				conj("avoir", "présent", "affirmatif", true) +
+					" le temps qu'il vous faut",
+			)}
+	>
+		Laissez du temps...
 	</Bouton>
 </PopupEnnuyeux>
+
+<Popup bind:ouvert={testHumain}>
+	<TestHumanite bind:validé={humain} />
+</Popup>
 
 <style>
 	.hidden {

@@ -559,6 +559,8 @@ function formuler(v: keyof typeof conjugaison, temps: "présent" | "subjonctif" 
 	return résultat
 }
 
+// FIXME : Réparer ce b*rd*l de m***e
+
 const mots = {
     "poisson": {
         "s": {

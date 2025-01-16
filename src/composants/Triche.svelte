@@ -1,5 +1,5 @@
 <script lang="ts">
-	import triche from "../states/triche.svelte";
+	import { _tricheStockée } from "../states/triche.svelte";
 
 	let dialogue: HTMLDialogElement;
 	let position = 0;
@@ -21,7 +21,7 @@
 			position++;
 
 			if (position === touches.length) {
-				triche.activée = !triche.activée;
+				_tricheStockée.activée = !_tricheStockée.activée;
 				position = 0;
 			}
 		} else {
@@ -30,7 +30,7 @@
 	}
 
 	$effect(() => {
-		if (triche.activée) {
+		if (_tricheStockée.activée) {
 			dialogue.show();
 		} else {
 			dialogue.close();
@@ -43,9 +43,16 @@
 <dialog class="cheat" bind:this={dialogue}>
 	Mode triche activé !!!
 	<ul>
-		<li>
-			<input type="checkbox" bind:checked={triche.pasDeTutoriels} /> Pas de tutoriels
-		</li>
+		<input type="checkbox" bind:checked={_tricheStockée.pasDeTutoriels} />
+		Pas de tutoriels
+		<input type="checkbox" bind:checked={_tricheStockée.pasDeCaptchas} />
+		Pas de captchas
+		<input type="checkbox" bind:checked={_tricheStockée.pasDeDelais} />
+		Pas de delais
+		<input type="checkbox" bind:checked={_tricheStockée.boutonsCachés} />
+		Boutons cachés
+		<input type="checkbox" bind:checked={_tricheStockée.sélecteurOrdonné} />
+		Sélecteur ordonné
 	</ul>
 </dialog>
 

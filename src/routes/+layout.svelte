@@ -4,6 +4,10 @@
 	import { base } from "$app/paths";
 	import Triche from "../composants/Triche.svelte";
 	import { conj } from "../composants/francais.svelte";
+	import { attentes } from "../states/attente.svelte";
+	import Attente from "../composants/Attente.svelte";
+	import Bouton from "../composants/basiques/Bouton.svelte";
+    import { goto } from "$app/navigation";
 
 	let { children } = $props();
 	let sélecteur = `${base}/selecteur`;
@@ -13,7 +17,10 @@
 	<Triche />
 	<header>
 		<h1>
-			Yuser <a style="margin-left: 1rem;" href="https://github.com/science-numerale/yuser" target="_blank"
+			Yuser <a
+				style="margin-left: 1rem;"
+				href="https://github.com/science-numerale/yuser"
+				target="_blank"
 				><img
 					height="20"
 					alt="Logo de GitHub"
@@ -23,25 +30,24 @@
 		</h1>
 		<ul>
 			<li>
-				<a
-					aria-current={page.url.pathname === sélecteur ? "page" : undefined}
-					href={sélecteur}
+				<Bouton
+					clic={() => goto(sélecteur)}
+					style="texte"
 				>
-					Sélecteur de page
-				</a>
+					<span class="lien">Sélecteur de pages</span>
+				</Bouton>
 			</li>
 			<li>
-				<a
-					aria-current={page.url.pathname === sélecteur ? "page" : undefined}
-					href={page.url.href}
-					onclick={() =>
+				<Bouton
+					clic={() =>
 						alert(
 							conj("devoir", "présent", "affirmatif", true) +
 								" aller sur le sélecteur de page",
 						)}
+					style="texte"
 				>
-					Autres pages
-				</a>
+					<span class="lien">Autres pages</span>
+				</Bouton>
 			</li>
 		</ul>
 	</header>
@@ -57,6 +63,10 @@
 				très rare{/if}
 		</p>
 	</footer>
+
+	{#if attentes.n > 0}
+		<Attente />
+	{/if}
 </div>
 
 <style>
@@ -85,13 +95,13 @@
 		float: left;
 	}
 
-	li > * {
+	.lien {
 		color: white;
 		text-align: center;
 		padding: 0.5rem 1rem;
 		text-decoration: none;
 	}
-	li > *:hover {
+	.lien:hover {
 		background: var(--hover-accent-color-1);
 	}
 </style>
