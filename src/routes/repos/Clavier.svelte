@@ -1,12 +1,17 @@
 <script lang="ts">
 	let text = $state("");
 	let maj = $state(false);
-	function ajouter(c) {
+function ajouter(c) {
 		text += c;
 	}
 </script>
 
-{#if text == "Merlin l'enchanteur"}
+{#if text == "Cruise"}
+	<img
+		src="https://media.tenor.com/SViLm2OS94oAAAAC/top-gun-sunglasses.gif"
+		alt="Le vrai Tom."
+	/>
+{:else if text == "Merlin l'enchanteur"}
 	<img
 		src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fvignette.wikia.nocookie.net%2Fonceuponatime%2Fimages%2Fa%2Fac%2FMerlin_l%27Enchanteur_(Disney)_Higitus_Figitus_danse_livres.gif%2Frevision%2Flatest%2Fscale-to-width-down%2F640%3Fcb%3D20150512114452%26path-prefix%3Dfr&f=1&nofb=1&ipt=2139c1e6fa8f0a80cb15bc5d23250b8b5ac2392b5c5db597cc75b82769c462fe&ipo=images"
 		alt="Merlin l'enchanteur dans Disney, scène de la danse des livres"
