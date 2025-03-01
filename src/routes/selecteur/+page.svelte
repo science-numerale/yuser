@@ -44,7 +44,7 @@
 		{#each Array(nombre) as _, i}
 			{#each Object.entries(positions) as [page, pos]}
 				{#if i === (triche().sélecteurOrdonné ? 0 : pos)}
-					<li>
+					<li style="list-style: none;">
 						<a href={base + pages[page]}>{page}</a>
 					</li>
 				{/if}

@@ -1,7 +1,7 @@
 <script lang="ts">
 	let text = $state("");
 	let maj = $state(false);
-function ajouter(c) {
+	function ajouter(c: string) {
 		text += c;
 	}
 </script>

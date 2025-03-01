@@ -41,7 +41,7 @@
 </Bouton>
 
 <p>
-	Ce site est une suite du site <a href="https://userinyerface.com/">
+	Ce site est une suite officieuse du site <a href="https://userinyerface.com/">
 		User Inyerface
 	</a>
 </p>
@@ -65,6 +65,8 @@
 	Afficher "ne pas"
 </div>
 
+<small>PS : Si ça marche pas, cliquer sur le verbe à l'infinitif</small>
+
 <PopupEnnuyeux bind:ouvert={popup}>
 	{conj("vouloir", "présent", "interrogatif", true, false).toString()}
 	<Bouton clic={étape2} style="texte">démarrer</Bouton>
@@ -82,7 +84,9 @@
 			)}
 	>
 		Laissez du temps...
-	</Bouton>
+	</Bouton><br />
+
+	<small class="small">PS : Si ça marche pas, cliquer sur le verbe à l'infinitif</small>
 </PopupEnnuyeux>
 
 <Popup bind:ouvert={testHumain}>

@@ -31,7 +31,7 @@
 				identifiant[2] === alphabet[clé + 9] &&
 				identifiant[5] === alphabet[clé + 3]
 			) {
-				alert(conj("être", "présent", "affirmatif", true) + " connecté !");
+				alert(conj("être", "présent", "affirmatif", true) + " connecté ! (Attention: ne pas aller sur la page 666)");
 				compte.connecté = true;
 			}
 		}
