@@ -3,7 +3,10 @@
 	let direction = $state({down: false, up: false, right: false, left: false});
 	let bugs = $state([]);
 	let blue_screens = $state([]);
-	// TODO: stocker le meilleur score
+	let best = $state(0);	
+	if (Number(localStorage.getItem("best"))) {
+		best = Number(localStorage.getItem("best"))
+	}
 	let majs = $state([]);
 	let score = $state(0);
 	let game_over=$state(false);
@@ -70,6 +73,10 @@
 
 				if (h && v) {
 					game_over=true;
+					if (score>best) {
+						best=score;
+						localStorage.setItem("best", best.toString());
+					}
 				}
 			}
 		}
@@ -103,7 +110,12 @@
 
 				if (h && v) {
 					game_over=true;
+					if (score>best) {
+						best=score;
+						localStorage.setItem("best", best.toString());
+					}
 				}
+
 			}
 		}
 		for (let i=0; i<majs.length; i++) {
@@ -132,7 +144,7 @@
 		setTimeout(add_bug, Math.floor(Math.random()*300));
 	}
 	function add_bs() {
-		blue_screens.push({y: -100, x: Math.floor(Math.random()*(tux)), speed: 4+Math.floor(Math.random()*3)})
+		blue_screens.push({y: -100, x: Math.floor(Math.random()*(tux)), speed: 2+Math.floor(Math.random()*3)})
 		setTimeout(add_bs, Math.floor(1000+Math.random()*1000));
 	}
 	function add_maj() {
@@ -148,12 +160,13 @@
 {#if game_over}
 <h1>Game Over !</h1>
 <h2>Score: {score}</h2>
+<h2>Meilleur score : {best}</h2>
 <button onclick={() => {game_over=false; bugs=[]; blue_screens=[]; score=0; tux=window.innerWidth; majs=[]}}>rejouer</button>
 {:else}
 <div class="game">
 <h1>{position.x} {position.y}</h1>
 <h1>{bugs.length} {blue_screens.length}</h1>
-<h1>{score}</h1>
+<h1>{score} / {best}</h1>
 <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ffreepngimg.com%2Fthumb%2Fandroid%2F69417-tux-kernel-distribution-linux-free-transparent-image-hq.png&f=1&nofb=1&ipt=a63c858c6d133b67a32d237cd6526ff5bf9d89aef400e3a767eab34a590c3f0d&ipo=images" alt="Tux" class="tux" style="--x: {tux}px"/>
 
 <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Flogospng.org%2Fdownload%2Fwindows-11%2Flogo-windows-11-icon-512.png&f=1&nofb=1&ipt=30fd6dbbc43d95d8d1a7fa1663c6bf5caaa9b4fcfa049f6af7d82ce62713ef1b&ipo=images" style="--x: {position.x}px; --y: {position.y}px" class="windows" alt="Windows"/>
