@@ -14,30 +14,16 @@
 		mélange?: boolean;
 	} = $props();
 
-	let cliqué = $state(false);
-
-	let clés = $state(
+	let clés = $derived(
 		mélange ? mélanger(Object.keys(options)) : Object.keys(options),
 	);
 
-	// Le faire plus proprement
+	// TODO : Le faire plus proprement
 	let id = Math.random().toString();
-
-	$effect(() => {
-		if (cliqué) {
-			cliqué = false;
-			clés = mélange ? mélanger(Object.keys(options)) : Object.keys(options);
-		}
-	});
 </script>
 
 {#if style === "select"}
-	<select
-		bind:value={sélection}
-		oninput={() => {
-			cliqué = true;
-		}}
-	>
+	<select bind:value={sélection}>
 		{#each clés as clé}
 			{#if typeof options[clé] === "string"}
 				<option value={clé}>{options[clé]}</option>

@@ -13,12 +13,14 @@
 		observer.observe(divCool);
 	});
 
+	// Pas de code source car sinon le site ajoute "base"
 	let pages = {
 		Maison: "/",
 		Connexion: "/connexion",
 		"À propos": "/apropos",
 		"Sélecteur de page": "/selecteur",
-		"Repos (page zen)": "/repos", // Pas de code source car sinon le site ajoute "base"
+		"Repos (page zen)": "/repos",
+		"Simulateur de trump": "/simulateur-trump",
 	};
 
 	let positions = {};
